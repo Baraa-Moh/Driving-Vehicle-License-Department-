@@ -1,0 +1,11 @@
+C:\Users\PCD\source\repos\DVLD BLL\bin\Debug\DVLD BLL.dll
+C:\Users\PCD\source\repos\DVLD BLL\bin\Debug\DVLD BLL.pdb
+C:\Users\PCD\source\repos\DVLD BLL\bin\Debug\Common.dll
+C:\Users\PCD\source\repos\DVLD BLL\bin\Debug\DVLD DAL.dll
+C:\Users\PCD\source\repos\DVLD BLL\bin\Debug\Common.pdb
+C:\Users\PCD\source\repos\DVLD BLL\bin\Debug\DVLD DAL.pdb
+C:\Users\PCD\source\repos\DVLD BLL\obj\Debug\DVLD BLL.csproj.AssemblyReference.cache
+C:\Users\PCD\source\repos\DVLD BLL\obj\Debug\DVLD BLL.csproj.CoreCompileInputs.cache
+C:\Users\PCD\source\repos\DVLD BLL\obj\Debug\DVLD BLL.csproj.Up2Date
+C:\Users\PCD\source\repos\DVLD BLL\obj\Debug\DVLD BLL.dll
+C:\Users\PCD\source\repos\DVLD BLL\obj\Debug\DVLD BLL.pdb
