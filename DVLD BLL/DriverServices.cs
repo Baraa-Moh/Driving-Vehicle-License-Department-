@@ -21,6 +21,10 @@ namespace DVLD_BLL
         {
            return _rep.GetDriver(driverID);
         }
+        public Driver GetDriverByPersonID(int personID)
+        {
+            return _rep.GetDriverByPersonID(personID);
+        }
         public DataTable GetAllDrivers()
         {
             return _rep.GetAllDrivers();

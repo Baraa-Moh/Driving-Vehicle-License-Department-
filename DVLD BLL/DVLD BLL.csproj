@@ -44,6 +44,7 @@
     <Compile Include="ApplicationServices.cs" />
     <Compile Include="ApplicationTypeServices.cs" />
     <Compile Include="CountryServices.cs" />
+    <Compile Include="DetainedLicenseServices.cs" />
     <Compile Include="DriverServices.cs" />
     <Compile Include="DTOs\LDLApplicationDto.cs" />
     <Compile Include="DTOs\TestAppointmentDto.cs" />

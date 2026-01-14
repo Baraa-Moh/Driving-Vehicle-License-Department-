@@ -66,29 +66,6 @@ namespace DVLD_DAL
             finally { conn.Close(); }
             return license;
         }
-        public Common.License GetLicenseByPersonID(int personID)
-        {
-            Common.License license = null;
-            SqlConnection conn = new SqlConnection(_connectionString);
-            string Query = "SELECT * FROM Licenses WHERE Person = @ID";
-            SqlCommand command = new SqlCommand(Query, conn);
-            command.Parameters.AddWithValue("@ID", personID);
-
-            try
-            {
-                conn.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                    license = MapLicense(reader);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            finally { conn.Close(); }
-            return license;
-        }
         public Common.License GetLicenseByAppID(int appID)
         {
             Common.License license = null;

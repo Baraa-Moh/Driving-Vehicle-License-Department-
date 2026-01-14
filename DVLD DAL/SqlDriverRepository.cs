@@ -44,6 +44,29 @@ namespace DVLD_DAL
             finally { conn.Open(); }
             return driver;
         }
+        public Driver GetDriverByPersonID(int personID)
+        {
+            Driver driver = null;
+            SqlConnection conn = new SqlConnection(_connectionString);
+            string Query = "SELECT * FROM Drivers WHERE PersonID = @ID";
+            SqlCommand command = new SqlCommand(Query, conn);
+            command.Parameters.AddWithValue("@ID", personID);
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    driver = MapDriver(reader);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally { conn.Close(); }
+            return driver;
+        }
         private Driver MapDriver(SqlDataReader reader)
         {
             return new Driver((int)reader["DriverID"], (int)reader["PersonID"],

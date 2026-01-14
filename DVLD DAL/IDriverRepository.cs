@@ -12,6 +12,7 @@ namespace DVLD_DAL
     {
         Driver GetDriver(int driverID);
         DataTable GetAllDrivers();
+        Driver GetDriverByPersonID(int personID);
         bool AddNew(Driver driver);
         bool Delete(int driverID);  
         bool Update(Driver driver);
