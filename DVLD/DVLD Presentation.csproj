@@ -60,6 +60,12 @@
     <Compile Include="Applications\DrivingLicenses\IssueDrivingLicenseForFirstTime.Designer.cs">
       <DependentUpon>IssueDrivingLicenseForFirstTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\DrivingLicenses\LicenseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\DrivingLicenses\LicenseHistory.Designer.cs">
+      <DependentUpon>LicenseHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\DrivingLicenses\LicenseInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\DrivingLicenses\IssueDrivingLicenseForFirstTime.resx">
       <DependentUpon>IssueDrivingLicenseForFirstTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\DrivingLicenses\LicenseHistory.resx">
+      <DependentUpon>LicenseHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\DrivingLicenses\LicenseInfo.resx">
       <DependentUpon>LicenseInfo.cs</DependentUpon>

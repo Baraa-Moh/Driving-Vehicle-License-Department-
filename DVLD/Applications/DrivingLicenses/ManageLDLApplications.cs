@@ -161,5 +161,11 @@ namespace DVLD.Applications.DrivingLicenses
             LicenseInfo form = new LicenseInfo(LDLappID);
             form.ShowDialog();
         }
+
+        private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LicenseHistory form = new LicenseHistory(_LDLApp.Application.PersonID);
+            form.ShowDialog();
+        }
     }
 }

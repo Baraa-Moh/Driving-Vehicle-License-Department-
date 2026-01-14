@@ -35,10 +35,6 @@ namespace DVLD_BLL
         {
             return _rep.GetLicense(licenseID);
         }
-        public Common.License GetLicenseByPersonID(int personID)
-        {
-            return _rep.GetLicenseByPersonID(personID);
-        }
         public Common.License GetLicenseByAppID(int appID)
         {
             return _rep.GetLicenseByAppID(appID);
@@ -87,6 +83,7 @@ namespace DVLD_BLL
                 driver.PersonID = LDLApp.Application.PersonID;
                 driver.CreatedByUserID = Core.CurrentUser.UserID;
                 driver.CreatedDate = DateTime.Now;
+                license.isActive = true;
 
                 if (!_rep.AddNew(license,ref error))
                 {

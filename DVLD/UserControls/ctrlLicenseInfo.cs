@@ -22,6 +22,7 @@ namespace DVLD.UserControls
         private LicenseServices _LicenseServices;
         private LicenseClassServices _LicenseClassServices;
         private PersonServices _personServices;
+        private DetainedLicenseServices _detainedLicenseServices;
         public ctrlLicenseInfo()
         {
             InitializeComponent();
@@ -37,7 +38,9 @@ namespace DVLD.UserControls
             _license = license;
             _LDLApp = _LDLappServices.GetLDLApplicationByAppID(_license.ApplicationID);
             _LicenseClassServices = new LicenseClassServices(new SqlLicenseClassRepository());
+            _LicenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository()), new ApplicationServices(new SqlApplicationRepository()));
             _personServices = new PersonServices(new SqlPersonRepository()); ;
+            _detainedLicenseServices = new DetainedLicenseServices(new SqlDetainedLicenseRepository());
 
             Prepare(); ;
         }
@@ -49,6 +52,7 @@ namespace DVLD.UserControls
             _license = _LicenseServices.GetLicenseByAppID(_LDLApp.Application.ID);
             _LicenseClassServices = new LicenseClassServices(new SqlLicenseClassRepository());
             _personServices = new PersonServices(new SqlPersonRepository()); ;
+            _detainedLicenseServices = new DetainedLicenseServices(new SqlDetainedLicenseRepository());
 
             Prepare();
         }
@@ -68,8 +72,9 @@ namespace DVLD.UserControls
             lbExpirationDate.Text = _license.ExpirationDate.ToString();
             lbDateOfBirth.Text = person.DateOfBirth.ToString();
             lbDriverID.Text= _license.DriverID.ToString();  
-            
-            if(person.ImagePath != null)
+            lbIsDetained.Text = _detainedLicenseServices.isDetained(_license.LicenseID) ? "Yes" : "No";
+
+            if (person.ImagePath != null)
             {
                 pbImage.Load(person.ImagePath);
             }
@@ -79,7 +84,7 @@ namespace DVLD.UserControls
                     pbImage.Image = Properties.Resources.Male_512;
                 else pbImage.Image = Properties.Resources.Female_512;
             }
-            //lbIsDetained  soon.....
+            
         }
     }
 }

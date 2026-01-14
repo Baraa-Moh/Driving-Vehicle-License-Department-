@@ -12,7 +12,6 @@ namespace DVLD_DAL
     {
 
         DataTable GetAllLicensesByDriverID(int  driverID);
-        Common.License GetLicenseByPersonID(int personID);
         Common.License GetLicenseByAppID(int appID);
         Common.License GetLicense(int LicenseID);
         bool Update(Common.License license);
