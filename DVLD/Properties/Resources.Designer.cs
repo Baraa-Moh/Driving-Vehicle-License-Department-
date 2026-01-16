@@ -323,6 +323,16 @@ namespace DVLD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Driver_Main {
+            get {
+                object obj = ResourceManager.GetObject("Driver Main", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Drivers_64 {
             get {
                 object obj = ResourceManager.GetObject("Drivers 64", resourceCulture);
@@ -616,6 +626,16 @@ namespace DVLD.Properties {
         internal static System.Drawing.Bitmap PersonLicenseHistory_321 {
             get {
                 object obj = ResourceManager.GetObject("PersonLicenseHistory 321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PersonLicenseHistory_512 {
+            get {
+                object obj = ResourceManager.GetObject("PersonLicenseHistory 512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
