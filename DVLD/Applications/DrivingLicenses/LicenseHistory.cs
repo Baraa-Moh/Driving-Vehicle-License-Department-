@@ -22,8 +22,8 @@ namespace DVLD.Applications.DrivingLicenses
         {
             InitializeComponent();
             LDLApplicationServices _LDLappServices = new LDLApplicationServices(new ApplicationServices(new SqlApplicationRepository()), new TestSharedServices(), new SqlLDLApplicationRepository());
-            _licenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository()), new ApplicationServices(new SqlApplicationRepository()));
-            _driverServices = new DriverServices(new SqlDriverRepository());
+            _licenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices()), new ApplicationServices(new SqlApplicationRepository()));
+            _driverServices = new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices());
             _driver = _driverServices.GetDriverByPersonID(personID); 
         }
 

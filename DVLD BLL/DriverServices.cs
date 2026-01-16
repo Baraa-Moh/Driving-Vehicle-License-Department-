@@ -12,10 +12,14 @@ namespace DVLD_BLL
     public class DriverServices
     {
         private readonly IDriverRepository _rep;
+        private readonly PersonServices _personServices;
+        private readonly TestSharedServices _testSharedServices;
 
-        public DriverServices(IDriverRepository rep)
+        public DriverServices(IDriverRepository rep, PersonServices personServices, TestSharedServices testSharedServices)
         {
             _rep = rep;
+            _personServices = personServices;
+            _testSharedServices = testSharedServices;
         }
         public Driver GetDriver(int driverID)
         {
@@ -27,7 +31,33 @@ namespace DVLD_BLL
         }
         public DataTable GetAllDrivers()
         {
-            return _rep.GetAllDrivers();
+            DataTable drivers = _rep.GetAllDrivers();
+            return AdjustDataTable(drivers);
+        }
+        private DataTable AdjustDataTable(DataTable drivers)
+        {
+            DataTable drivers2 = new DataTable();
+            drivers2.Columns.Add("Driver ID", typeof(int));
+            drivers2.Columns.Add("Person ID", typeof(int));
+            drivers2.Columns.Add("National No.", typeof(string));
+            drivers2.Columns.Add("Full Name", typeof(string));   
+            drivers2.Columns.Add("Date", typeof(DateTime));  
+            drivers2.Columns.Add("Active License", typeof(short));
+
+            foreach (DataRow row in drivers.Rows)
+            {
+                Person person = _personServices.FindPersonByID((int)row["PersonID"]);
+                short activeLicense = _testSharedServices.NumberOfActiveLicenses((int)row["DriverID"]);
+                drivers2.Rows.Add(
+                    row["DriverID"],
+                    person.ID,
+                    person.NationalID,
+                    person.FullName,
+                    row["CreatedDate"],
+                    activeLicense
+                    );
+            }
+            return drivers2;
         }
         private bool AddNew (Driver driver)
         {

@@ -79,5 +79,11 @@ namespace DVLD
             ManageLDLApplications form = new ManageLDLApplications();
             form .ShowDialog();
         }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DriversList form = new DriversList();
+            form.ShowDialog();
+        }
     }
 }

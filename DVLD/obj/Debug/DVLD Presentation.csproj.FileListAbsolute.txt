@@ -91,3 +91,4 @@ C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-
 C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.exe
 C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.pdb
 C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.Applications.DrivingLicenses.LicenseHistory.resources
+C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.Applications.DrivingLicenses.DriversList.resources

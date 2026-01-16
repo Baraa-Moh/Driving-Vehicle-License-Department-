@@ -38,7 +38,7 @@ namespace DVLD.UserControls
             _license = license;
             _LDLApp = _LDLappServices.GetLDLApplicationByAppID(_license.ApplicationID);
             _LicenseClassServices = new LicenseClassServices(new SqlLicenseClassRepository());
-            _LicenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository()), new ApplicationServices(new SqlApplicationRepository()));
+            _LicenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices()), new ApplicationServices(new SqlApplicationRepository()));
             _personServices = new PersonServices(new SqlPersonRepository()); ;
             _detainedLicenseServices = new DetainedLicenseServices(new SqlDetainedLicenseRepository());
 
@@ -48,7 +48,7 @@ namespace DVLD.UserControls
         {
             _LDLappServices = new LDLApplicationServices(new ApplicationServices(new SqlApplicationRepository()), new TestSharedServices(), new SqlLDLApplicationRepository());
             _LDLApp = _LDLappServices.GetLDLApplication(LDLAppID);
-            _LicenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository()), new ApplicationServices(new SqlApplicationRepository()));
+            _LicenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices()), new ApplicationServices(new SqlApplicationRepository()));
             _license = _LicenseServices.GetLicenseByAppID(_LDLApp.Application.ID);
             _LicenseClassServices = new LicenseClassServices(new SqlLicenseClassRepository());
             _personServices = new PersonServices(new SqlPersonRepository()); ;

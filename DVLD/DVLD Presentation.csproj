@@ -54,6 +54,12 @@
     <Compile Include="Applications\ApplicationTypes\EditApplicationType.Designer.cs">
       <DependentUpon>EditApplicationType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\DrivingLicenses\DriversList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\DrivingLicenses\DriversList.Designer.cs">
+      <DependentUpon>DriversList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\DrivingLicenses\IssueDrivingLicenseForFirstTime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     </Compile>
     <EmbeddedResource Include="Applications\ApplicationTypes\EditApplicationType.resx">
       <DependentUpon>EditApplicationType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\DrivingLicenses\DriversList.resx">
+      <DependentUpon>DriversList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\DrivingLicenses\IssueDrivingLicenseForFirstTime.resx">
       <DependentUpon>IssueDrivingLicenseForFirstTime.cs</DependentUpon>
@@ -605,6 +614,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LicenseView 400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Driver Main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PersonLicenseHistory 512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
