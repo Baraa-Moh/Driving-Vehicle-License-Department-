@@ -43,7 +43,7 @@ namespace DVLD.Applications.DrivingLicenses
             ctrlFindShowPersonDetails1.Load_Information(_driver.PersonID);
             ctrlFindShowPersonDetails1.Enabled = false;
             lbRecords.Text = dgvLocal.Rows.Count.ToString() + " records found.";
-            //will implement international history later.......
+            dgvInternational.DataSource = _licenseServices.GetAllLicensesByDriverID(_driver.DriverID);
         }
 
         private void btClose_Click(object sender, EventArgs e)

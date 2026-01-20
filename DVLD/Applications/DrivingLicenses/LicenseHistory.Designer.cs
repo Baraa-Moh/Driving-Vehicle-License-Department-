@@ -39,12 +39,15 @@
             this.tabInternational = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btClose = new System.Windows.Forms.Button();
+            this.dgvInternational = new System.Windows.Forms.DataGridView();
             this.ctrlFindShowPersonDetails1 = new DVLD.UserControls.ctrlFindShowPersonDetails();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabLocal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocal)).BeginInit();
+            this.tabInternational.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInternational)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -128,6 +131,7 @@
             // 
             // tabInternational
             // 
+            this.tabInternational.Controls.Add(this.dgvInternational);
             this.tabInternational.Location = new System.Drawing.Point(4, 23);
             this.tabInternational.Name = "tabInternational";
             this.tabInternational.Padding = new System.Windows.Forms.Padding(3);
@@ -159,6 +163,18 @@
             this.btClose.UseVisualStyleBackColor = true;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
+            // dgvInternational
+            // 
+            this.dgvInternational.AllowUserToAddRows = false;
+            this.dgvInternational.AllowUserToDeleteRows = false;
+            this.dgvInternational.AllowUserToOrderColumns = true;
+            this.dgvInternational.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInternational.Location = new System.Drawing.Point(6, 6);
+            this.dgvInternational.Name = "dgvInternational";
+            this.dgvInternational.ReadOnly = true;
+            this.dgvInternational.Size = new System.Drawing.Size(1275, 183);
+            this.dgvInternational.TabIndex = 0;
+            // 
             // ctrlFindShowPersonDetails1
             // 
             this.ctrlFindShowPersonDetails1.EnableFilter = true;
@@ -186,7 +202,9 @@
             this.tabLocal.ResumeLayout(false);
             this.tabLocal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLocal)).EndInit();
+            this.tabInternational.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInternational)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,5 +223,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvLocal;
         private System.Windows.Forms.Button btClose;
+        private System.Windows.Forms.DataGridView dgvInternational;
     }
 }

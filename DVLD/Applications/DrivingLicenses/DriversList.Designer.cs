@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lbRecords = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tbLike = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +85,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(189, 21);
             this.comboBox1.TabIndex = 3;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -118,11 +120,20 @@
             this.dataGridView1.Size = new System.Drawing.Size(897, 223);
             this.dataGridView1.TabIndex = 4;
             // 
+            // tbLike
+            // 
+            this.tbLike.Location = new System.Drawing.Point(310, 230);
+            this.tbLike.Name = "tbLike";
+            this.tbLike.Size = new System.Drawing.Size(203, 20);
+            this.tbLike.TabIndex = 7;
+            this.tbLike.TextChanged += new System.EventHandler(this.tbLike_TextChanged);
+            // 
             // DriversList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 588);
+            this.Controls.Add(this.tbLike);
             this.Controls.Add(this.lbRecords);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView1);
@@ -149,5 +160,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbRecords;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox tbLike;
     }
 }

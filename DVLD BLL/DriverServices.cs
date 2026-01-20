@@ -3,6 +3,7 @@ using DVLD_DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,12 +38,17 @@ namespace DVLD_BLL
         private DataTable AdjustDataTable(DataTable drivers)
         {
             DataTable drivers2 = new DataTable();
-            drivers2.Columns.Add("Driver ID", typeof(int));
-            drivers2.Columns.Add("Person ID", typeof(int));
-            drivers2.Columns.Add("National No.", typeof(string));
-            drivers2.Columns.Add("Full Name", typeof(string));   
+            drivers2.Columns.Add("DriverID", typeof(int));
+            drivers2.Columns.Add("PersonID", typeof(int));
+            drivers2.Columns.Add("NationalNo", typeof(string));
+            drivers2.Columns.Add("FullName", typeof(string));   
             drivers2.Columns.Add("Date", typeof(DateTime));  
-            drivers2.Columns.Add("Active License", typeof(short));
+            drivers2.Columns.Add("ActiveLicenses", typeof(short));
+
+            drivers2.Columns["DriverID"].Caption = "Driver ID";    
+            drivers2.Columns["PersonID"].Caption = "Person ID";
+            drivers2.Columns["NationalNo"].Caption = "National No.";
+            drivers2.Columns["FullName"].Caption = "Full Name";  
 
             foreach (DataRow row in drivers.Rows)
             {
@@ -58,6 +64,29 @@ namespace DVLD_BLL
                     );
             }
             return drivers2;
+        }
+        public DataView FilterDrivers(DataTable drivers,Core.enDriversFilter filter, string Like = null)
+        {
+            drivers.CaseSensitive = false;
+            DataView dataView = drivers.DefaultView;
+            Like = Like == null ? "" : Like;
+
+            if (filter == Core.enDriversFilter.None)
+            {
+                dataView.RowFilter = "";
+                dataView.Sort = "DriverID";
+            }
+            else
+            {
+                dataView.Sort = $"{filter.ToString()}";
+                dataView.RowFilter = $"Convert({filter}, 'System.String') LIKE '{Like}%'";
+            }
+                return dataView;
+        }
+        public int GetPersonIDByDriverID(int driverID)
+        {
+            Driver driver = GetDriver(driverID);
+            return driver != null ? driver.PersonID : -1;
         }
         private bool AddNew (Driver driver)
         {

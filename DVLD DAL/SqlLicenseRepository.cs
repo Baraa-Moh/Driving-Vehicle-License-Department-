@@ -89,6 +89,27 @@ namespace DVLD_DAL
             finally { conn.Close(); }
             return license;
         }
+        public Common.License GetLicenseByDriverID(int driverID)
+        {
+            Common.License license = null;
+            SqlConnection conn = new SqlConnection(_connectionString);
+            string Query = "SELECT * FROM Licenses WHERE DriverID = @ID";
+            SqlCommand command = new SqlCommand(Query, conn);
+            command.Parameters.AddWithValue("@ID", driverID);
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                    license = MapLicense(reader);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally { conn.Close(); }
+            return license;
+        }
         private Common.License MapLicense(SqlDataReader reader)
         {
             return new Common.License((int)reader["LicenseID"], (int)reader["ApplicationID"],
@@ -135,7 +156,7 @@ SELECT SCOPE_IDENTITY();";
             command.Parameters.AddWithValue("@LicenseClass",license.LicenseClassID);
             command.Parameters.AddWithValue("@IssueDate",license.IssueDate);
             command.Parameters.AddWithValue("@ExpirationDate",license.ExpirationDate);
-            command.Parameters.AddWithValue("@Notes",license.Notes);
+            command.Parameters.AddWithValue("@Notes",(object)license.Notes ?? DBNull.Value);
             command.Parameters.AddWithValue("@PaidFees",license.PaidFees);
             command.Parameters.AddWithValue("@IsActive", license.isActive);
             command.Parameters.AddWithValue("@IssueReason", license.IssueReason);
@@ -164,16 +185,16 @@ SELECT SCOPE_IDENTITY();";
             bool updated = false;
             SqlConnection conn = new SqlConnection(_connectionString);
             string Query = @"UPDATE Licenses SET ApplicationID = @ApplicationID,
-DriverID = @DriverID, LicenseClassID = @LicenseClassID, IssueDate = @IssueDate,
+DriverID = @DriverID, LicenseClass = @LicenseClass, IssueDate = @IssueDate,
 ExpirationDate= @ExpirationDate, Notes = @Notes, PaidFees = @PaidFees,
 IsActive = @IsActive, IssueReason = @IssueReason, CreatedByUserID= @CreatedByUserID";
             SqlCommand command = new SqlCommand(Query, conn);
             command.Parameters.AddWithValue("@ApplicationID",license.ApplicationID);
             command.Parameters.AddWithValue("@DriverID",license.DriverID);
-            command.Parameters.AddWithValue("@LicenseClassID", license.LicenseClassID);
+            command.Parameters.AddWithValue("@LicenseClass", license.LicenseClassID);
             command.Parameters.AddWithValue("@IssueDate",license.IssueDate);
             command.Parameters.AddWithValue("@ExpirationDate",license.ExpirationDate);
-            command.Parameters.AddWithValue("@Notes",license.Notes);
+            command.Parameters.AddWithValue("@Notes",(object)license.Notes ?? DBNull.Value);
             command.Parameters.AddWithValue("@PaidFees",license.PaidFees);
             command.Parameters.AddWithValue("@IsActive", license.isActive);
             command.Parameters.AddWithValue("@IssueReason", license.IssueReason);

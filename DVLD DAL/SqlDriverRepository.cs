@@ -41,7 +41,7 @@ namespace DVLD_DAL
 
                 throw;
             }
-            finally { conn.Open(); }
+            finally { conn.Close(); }
             return driver;
         }
         public Driver GetDriverByPersonID(int personID)
