@@ -33,9 +33,14 @@ namespace DVLD.UserControls
             _app = _appServices.GetApplicationByID(AppID);
             Fill_Fields();
         }
+        public void Load_Application(Common.Application app)
+        {
+            _app = app;
+            Fill_Fields();
+        }
         private void Fill_Fields()
         {
-            lbID.Text = _app.ID.ToString();
+            lbID.Text = _app.ID != -1 ? _app.ID.ToString() : "???";
             lbStatus.Text = _app.Status.ToString(); 
             lbType.Text = _appTypeServices.GetApplicationType(_app.TypeID).Title;
             lbApplicatnt.Text = _personServices.GetPerson(_app.PersonID).FullName ?? "???";

@@ -23,10 +23,16 @@ namespace DVLD.UserControls
         private LicenseClassServices _LicenseClassServices;
         private PersonServices _personServices;
         private DetainedLicenseServices _detainedLicenseServices;
+        private DriverServices _driverServices;
         public ctrlLicenseInfo()
         {
             InitializeComponent();
-            
+            _LDLappServices = new LDLApplicationServices(new ApplicationServices(new SqlApplicationRepository()), new TestSharedServices(), new SqlLDLApplicationRepository());
+            _LicenseClassServices = new LicenseClassServices(new SqlLicenseClassRepository());
+            _LicenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices()), new ApplicationServices(new SqlApplicationRepository()));
+            _personServices = new PersonServices(new SqlPersonRepository()); ;
+            _detainedLicenseServices = new DetainedLicenseServices(new SqlDetainedLicenseRepository());
+            _driverServices = new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices());
         }
         private void ctrlLicenseInfo_Load(object sender, EventArgs e)
         {
@@ -34,33 +40,23 @@ namespace DVLD.UserControls
         }
         public void Load_License(Common.License license)
         {
-            _LDLappServices = new LDLApplicationServices(new ApplicationServices(new SqlApplicationRepository()), new TestSharedServices(), new SqlLDLApplicationRepository());
             _license = license;
-            _LDLApp = _LDLappServices.GetLDLApplicationByAppID(_license.ApplicationID);
-            _LicenseClassServices = new LicenseClassServices(new SqlLicenseClassRepository());
-            _LicenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository()), new ApplicationServices(new SqlApplicationRepository()));
-            _personServices = new PersonServices(new SqlPersonRepository()); ;
-            _detainedLicenseServices = new DetainedLicenseServices(new SqlDetainedLicenseRepository());
 
             Prepare(); ;
         }
         public void Load_License(int LDLAppID)
         {
-            _LDLappServices = new LDLApplicationServices(new ApplicationServices(new SqlApplicationRepository()), new TestSharedServices(), new SqlLDLApplicationRepository());
             _LDLApp = _LDLappServices.GetLDLApplication(LDLAppID);
-            _LicenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository()), new ApplicationServices(new SqlApplicationRepository()));
             _license = _LicenseServices.GetLicenseByAppID(_LDLApp.Application.ID);
-            _LicenseClassServices = new LicenseClassServices(new SqlLicenseClassRepository());
-            _personServices = new PersonServices(new SqlPersonRepository()); ;
-            _detainedLicenseServices = new DetainedLicenseServices(new SqlDetainedLicenseRepository());
 
             Prepare();
         }
         private void Prepare()
         {
-            Person person = _personServices.GetPerson(_LDLApp.Application.PersonID);
+            int personID = _driverServices.GetDriver(_license.DriverID).PersonID;
+            Person person = _personServices.GetPerson(personID);
 
-            lbClass.Text = _LicenseClassServices.GetLicenseClass(_LDLApp.LDLApplication.LicenseClassID).Name;
+            lbClass.Text = _LicenseClassServices.GetLicenseClass(_license.LicenseClassID).Name;
             lbName.Text = person.FullName;
             lbNationalID.Text = person.NationalID;
             lbLicenseID.Text = _license.LicenseID.ToString();

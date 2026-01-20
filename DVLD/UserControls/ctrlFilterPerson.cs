@@ -76,7 +76,6 @@ namespace DVLD.UserControls
                     e.Handled = true;
                 }
             }
-
         }
         
         private void btAddPerson_Click(object sender, EventArgs e)

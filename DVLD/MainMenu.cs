@@ -68,16 +68,34 @@ namespace DVLD
             form .ShowDialog();
         }
 
-        private void newDrivingLicensesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            NewLDLApplication form = new NewLDLApplication();
-            form .ShowDialog();
-        }
-
         private void localDrivingLicesnsApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManageLDLApplications form = new ManageLDLApplications();
             form .ShowDialog();
+        }
+
+        private void driversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DriversList form = new DriversList();
+            form.ShowDialog();
+        }
+
+        private void localLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewLDLApplication form = new NewLDLApplication();
+            form.ShowDialog();
+        }
+
+        private void internationalLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewInternationalLicenseApp form = new NewInternationalLicenseApp();
+            form.ShowDialog();
+        }
+
+        private void renewDrivingLicensesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RenewLicenseApp form = new RenewLicenseApp();
+            form.ShowDialog();
         }
     }
 }

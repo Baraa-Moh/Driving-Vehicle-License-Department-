@@ -45,6 +45,7 @@
     <Compile Include="IApplicationTypeRepository.cs" />
     <Compile Include="ICountryRepository.cs" />
     <Compile Include="IDetainedLicenseRepository.cs" />
+    <Compile Include="IInternationalLicenseRepo.cs" />
     <Compile Include="ILicenseRepository.cs" />
     <Compile Include="ILicenseClassRepository.cs" />
     <Compile Include="ILDLApplicationRepository.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="IPersonRepository.cs" />
     <Compile Include="SqlDetainedLicenseRepository.cs" />
     <Compile Include="SqlDriverRepository.cs" />
+    <Compile Include="SqlInternationalLicenseRepo.cs" />
     <Compile Include="SqlLicenseClassRepository.cs" />
     <Compile Include="SqlLDLApplicationRepository.cs" />
     <Compile Include="SqlLicenseRepository.cs" />

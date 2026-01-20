@@ -16,11 +16,13 @@ namespace DVLD_BLL
         private readonly ITestRepository _testRep;
         private readonly ITestAppointmentRepository _testAppointmentRep;
         private readonly IApplicationRepository _appRep;
+        private readonly ILicenseRepository _licenseRep;    
         public TestSharedServices()
         {
             _testRep = new SqlTestRepository();
             _testAppointmentRep = new SqlTestAppointmentRepository();
             _appRep = new SqlApplicationRepository();
+            _licenseRep = new SqlLicenseRepository();
         }
 
         public TestDto GetTest(int testID)
@@ -145,6 +147,20 @@ namespace DVLD_BLL
                 return true;
                 }
             else return false;
+        }
+        public short NumberOfActiveLicenses(int driverID)
+        {
+            DataTable licenses = _licenseRep.GetAllLicensesByDriverID(driverID);
+            if (licenses == null)
+                return 0;
+            short active = 0;
+            foreach (DataRow row in licenses.Rows)
+            {
+                DateTime expiryDate = (DateTime)row["ExpirationDate"];
+                if (expiryDate > DateTime.Now || (bool)row["IsActive"])
+                    active++;
+            }
+            return active;
         }
     }
 }

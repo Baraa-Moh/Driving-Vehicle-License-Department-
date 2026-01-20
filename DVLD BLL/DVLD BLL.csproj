@@ -49,6 +49,7 @@
     <Compile Include="DTOs\LDLApplicationDto.cs" />
     <Compile Include="DTOs\TestAppointmentDto.cs" />
     <Compile Include="DTOs\TestDto.cs" />
+    <Compile Include="InternationalLicensesServices.cs" />
     <Compile Include="LicenseClassServices.cs" />
     <Compile Include="LDLApplicationServices.cs" />
     <Compile Include="LicenseServices.cs" />

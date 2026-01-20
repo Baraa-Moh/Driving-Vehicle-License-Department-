@@ -39,6 +39,10 @@ namespace DVLD_BLL
         {
             return _rep.GetLicenseByAppID(appID);
         }
+        public Common.License GetLicenseByDriverID(int driverID)
+        {
+            return _rep.GetLicenseByDriverID(driverID);
+        }
         public string GetIssueReason(int issueReasonID)
         {
             switch (issueReasonID)
@@ -121,6 +125,8 @@ namespace DVLD_BLL
                 Application app = _applicationServices.GetApplicationByID(newLicense.ApplicationID);
                 app.Status = 3;
                 _applicationServices.Save(app);
+                license2.isActive = false;
+                Update(license2, ref error);
                 return true;
             }
             else

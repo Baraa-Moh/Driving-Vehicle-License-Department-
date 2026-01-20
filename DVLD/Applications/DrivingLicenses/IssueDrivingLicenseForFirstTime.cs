@@ -31,7 +31,7 @@ namespace DVLD.Applications.DrivingLicenses
             _license = new Common.License();
             _LicenseClassServices = new LicenseClassServices(new SqlLicenseClassRepository());
             _licenseClass = _LicenseClassServices.GetLicenseClass(_LDLApp.LDLApplication.LicenseClassID);
-            _LicenseServices = new LicenseServices(new SqlLicenseRepository(),new TestSharedServices(),_LDLappServices,new DriverServices(new SqlDriverRepository()),new ApplicationServices(new SqlApplicationRepository()));
+            _LicenseServices = new LicenseServices(new SqlLicenseRepository(),new TestSharedServices(),_LDLappServices,new DriverServices(new SqlDriverRepository(),new PersonServices(new SqlPersonRepository()),new TestSharedServices()),new ApplicationServices(new SqlApplicationRepository()));
         }
 
         private void IssueDrivingLicenseForFirstTime_Load(object sender, EventArgs e)
