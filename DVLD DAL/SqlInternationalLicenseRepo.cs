@@ -40,11 +40,54 @@ namespace DVLD_DAL
             finally {conn.Close();}
             return all;
         }
+        public DataTable GetAllInternationalLicensesByDriverID(int driverID)
+        {
+            DataTable licenses = new DataTable();
+            SqlConnection conn = new SqlConnection(_connectionString);
+            string Query = "SELECT * FROM InternationalLicenses WHERE DriverID = @ID";
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@ID", driverID);
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                    licenses.Load(reader);
+                else licenses = null;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally { conn.Close(); }
+            return licenses;
+        }
         public InternationalLicense GetInternationalLicenseByDriverID(int id)
         {
             InternationalLicense license = null;
             SqlConnection conn = new SqlConnection(_connectionString);
             string Query = "SELECT * FROM InternationalLicenses WHERE DriverID = @Id";
+            SqlCommand cmd = new SqlCommand(Query, conn);
+            cmd.Parameters.AddWithValue("@Id", id);
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                    license = MapInternationalLicense(reader);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally { conn.Close(); }
+            return license;
+        }
+        public InternationalLicense GetInternationalLicense(int id)
+        {
+            InternationalLicense license = null;
+            SqlConnection conn = new SqlConnection(_connectionString);
+            string Query = "SELECT * FROM InternationalLicenses WHERE InternationalLicenseID = @Id";
             SqlCommand cmd = new SqlCommand(Query, conn);
             cmd.Parameters.AddWithValue("@Id", id);
             try

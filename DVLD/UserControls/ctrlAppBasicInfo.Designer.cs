@@ -80,9 +80,9 @@
             this.lbID.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbID.Location = new System.Drawing.Point(130, 22);
             this.lbID.Name = "lbID";
-            this.lbID.Size = new System.Drawing.Size(30, 16);
+            this.lbID.Size = new System.Drawing.Size(21, 16);
             this.lbID.TabIndex = 17;
-            this.lbID.Text = "10?";
+            this.lbID.Text = "??";
             // 
             // lbStatus
             // 
@@ -90,9 +90,9 @@
             this.lbStatus.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStatus.Location = new System.Drawing.Point(130, 60);
             this.lbStatus.Name = "lbStatus";
-            this.lbStatus.Size = new System.Drawing.Size(55, 16);
+            this.lbStatus.Size = new System.Drawing.Size(35, 16);
             this.lbStatus.TabIndex = 20;
-            this.lbStatus.Text = "New???";
+            this.lbStatus.Text = "????";
             // 
             // label3
             // 
@@ -122,9 +122,9 @@
             this.lbFees.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbFees.Location = new System.Drawing.Point(130, 102);
             this.lbFees.Name = "lbFees";
-            this.lbFees.Size = new System.Drawing.Size(45, 16);
+            this.lbFees.Size = new System.Drawing.Size(35, 16);
             this.lbFees.TabIndex = 40;
-            this.lbFees.Text = "100??";
+            this.lbFees.Text = "????";
             // 
             // lbType
             // 
@@ -132,9 +132,9 @@
             this.lbType.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbType.Location = new System.Drawing.Point(130, 150);
             this.lbType.Name = "lbType";
-            this.lbType.Size = new System.Drawing.Size(245, 16);
+            this.lbType.Size = new System.Drawing.Size(35, 16);
             this.lbType.TabIndex = 43;
-            this.lbType.Text = "New Local Driving License Services??";
+            this.lbType.Text = "????";
             // 
             // label5
             // 
@@ -193,9 +193,9 @@
             this.lbApplicatnt.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbApplicatnt.Location = new System.Drawing.Point(130, 195);
             this.lbApplicatnt.Name = "lbApplicatnt";
-            this.lbApplicatnt.Size = new System.Drawing.Size(89, 16);
+            this.lbApplicatnt.Size = new System.Drawing.Size(35, 16);
             this.lbApplicatnt.TabIndex = 46;
-            this.lbApplicatnt.Text = "Saad Saud??";
+            this.lbApplicatnt.Text = "????";
             // 
             // label6
             // 
@@ -286,9 +286,9 @@
             this.lbCreatedBy.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCreatedBy.Location = new System.Drawing.Point(713, 99);
             this.lbCreatedBy.Name = "lbCreatedBy";
-            this.lbCreatedBy.Size = new System.Drawing.Size(74, 16);
+            this.lbCreatedBy.Size = new System.Drawing.Size(35, 16);
             this.lbCreatedBy.TabIndex = 55;
-            this.lbCreatedBy.Text = "Bara_ksa?";
+            this.lbCreatedBy.Text = "????";
             // 
             // pictureBox8
             // 
