@@ -3,6 +3,7 @@ using DVLD_BLL.DTOs;
 using DVLD_DAL;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -71,7 +72,7 @@ namespace DVLD_BLL
 
             return set;
         }
-        private bool AddAsFirstTime(License license, ref string error)
+        private bool AddAsFirstTime(Common.License license, ref string error)
         {
             LDLApplicationDto LDLApp = _LDLappServices.GetLDLApplicationByAppID(license.ApplicationID);
             if (LDLApp == null)
@@ -107,9 +108,9 @@ namespace DVLD_BLL
                 return false;
             }
         }
-        private bool AddAsRenew(License newLicense, License license2, ref string error)
+        private bool ValidateAsRenew(Common.License newLicense, Common.License license2, ref string error)
         {
-            if(newLicense ==null )
+            if (newLicense == null)
             {
                 error = "Fill license info";
                 return false;
@@ -119,6 +120,18 @@ namespace DVLD_BLL
                 error = "Invalid expired license";
                 return false;
             }
+            if (HasActiveLicense(newLicense.DriverID)){
+               error = "There's an active license for this driver";
+                return false;
+            }
+
+            return true;
+        }
+        private bool AddAsRenew(Common.License newLicense, Common.License license2, ref string error)
+        {
+            if(!ValidateAsRenew(newLicense, license2, ref error))
+                return false;
+
             newLicense.IssueReason = 2;
             if (_rep.AddNew(newLicense, ref error))
             {
@@ -137,7 +150,20 @@ namespace DVLD_BLL
                 }
             }
         }
-        private bool AddAsReplacementOrDamaged(License newLicense, License license2, ref string error)
+        private bool HasActiveLicense(int driverID)
+        {
+            DataTable dt = GetAllLicensesByDriverID(driverID);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    if (Convert.ToBoolean(row["isActive"]) == true)
+                        return true;
+                }
+            }
+            return false;
+        }
+        private bool AddAsReplacementOrDamaged(Common.License newLicense, Common.License license2, ref string error)
         {
             if(newLicense ==null)
             {

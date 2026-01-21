@@ -11,6 +11,6 @@ namespace DVLD_DAL
         
         public DataSettings() { }
         public static string ConnectionString { get
-            { return "Server= .; Database= DVLD; User Id= sa; Password= 123456;"; } }
+            { return "Server= .; Database= DVLD3; User Id= sa; Password= 123456;"; } }
     }
 }

@@ -18,6 +18,7 @@ namespace DVLD.Applications.DrivingLicenses
         private LicenseServices _licenseServices;
         private Driver _driver;
         private DriverServices _driverServices;
+        private InternationalLicensesServices _intLicenseServices;
         public LicenseHistory(int personID)
         {
             InitializeComponent();
@@ -25,6 +26,7 @@ namespace DVLD.Applications.DrivingLicenses
             _licenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices()), new ApplicationServices(new SqlApplicationRepository()));
             _driverServices = new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices());
             _driver = _driverServices.GetDriverByPersonID(personID); 
+            _intLicenseServices = new InternationalLicensesServices(new SqlInternationalLicenseRepo(),_licenseServices);
         }
 
         private void LicenseHistory_Load(object sender, EventArgs e)
@@ -43,12 +45,26 @@ namespace DVLD.Applications.DrivingLicenses
             ctrlFindShowPersonDetails1.Load_Information(_driver.PersonID);
             ctrlFindShowPersonDetails1.Enabled = false;
             lbRecords.Text = dgvLocal.Rows.Count.ToString() + " records found.";
-            dgvInternational.DataSource = _licenseServices.GetAllLicensesByDriverID(_driver.DriverID);
+            dgvInternational.DataSource = _intLicenseServices.GetAllInternationalLicensesByDriverID(_driver.DriverID);
         }
 
         private void btClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void showLicenseInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(tabControl1.SelectedTab == tabLocal)
+            {
+                int licenseID = (int)dgvLocal.CurrentRow.Cells[0].Value;
+                LicenseInfo licenseInfoForm = new LicenseInfo(licenseID,true);
+                licenseInfoForm.ShowDialog();
+                return;
+            }
+            int intLicenseID = (int)dgvInternational.CurrentRow.Cells[0].Value;
+            InternationalLicenseInfo intLicenseInfoForm = new InternationalLicenseInfo(intLicenseID);
+            intLicenseInfoForm.ShowDialog();
         }
     }
 }

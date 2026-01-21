@@ -23,9 +23,13 @@ namespace DVLD_BLL
         {
             return _rep.GetAllInternationalLicenses();
         }
-        public InternationalLicense GetInternationalLicense(int DriverID)
+        public DataTable GetAllInternationalLicensesByDriverID(int DriverID)
         {
-            return _rep.GetInternationalLicenseByDriverID(DriverID);
+            return _rep.GetAllInternationalLicensesByDriverID(DriverID);
+        }
+        public InternationalLicense GetInternationalLicense(int licenseID)
+        {
+            return _rep.GetInternationalLicense(licenseID);
         }
         private bool Validate(InternationalLicense internationalLicense, ref string error)
         {

@@ -43,7 +43,7 @@ namespace DVLD.UserControls
             lbID.Text = _app.ID != -1 ? _app.ID.ToString() : "???";
             lbStatus.Text = _app.Status.ToString(); 
             lbType.Text = _appTypeServices.GetApplicationType(_app.TypeID).Title;
-            lbApplicatnt.Text = _personServices.GetPerson(_app.PersonID).FullName ?? "???";
+            lbApplicatnt.Text = _personServices.GetPerson(_app.PersonID)?.FullName ?? "???";
             lbFees.Text = _app.PaidFees.ToString(); 
             lbDate.Text = _app.Date.ToString();
             lbStatusDate.Text = _app.LastStatuesDate.ToString();

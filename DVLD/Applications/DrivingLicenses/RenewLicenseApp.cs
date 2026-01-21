@@ -47,13 +47,14 @@ namespace DVLD.Applications.DrivingLicenses
             if(_license.ExpirationDate > DateTime.Now)
             {
                 MessageBox.Show("The license is still valid and cannot be renewed.");
+                llbShowLicensesHistory.Enabled = false;
+                btIssue.Enabled = false;
                 return;
             }
 
             Fill_Application();
             llbShowLicensesHistory.Enabled = true;
             btIssue.Enabled = true;
-            ctrlFilterShowLicenseInfo1.EnableFilter = false;
         }
         private void Fill_Application()
         {

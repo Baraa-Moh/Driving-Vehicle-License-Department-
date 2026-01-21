@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DVLD_BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace DVLD.Applications.DrivingLicenses
     public partial class LicenseInfo : Form
     {
         private readonly Common.License _license;
+        private readonly LicenseServices _licenseServices;
         private readonly int _LDLappID;
         public LicenseInfo(Common.License license)
         {
@@ -25,6 +27,12 @@ namespace DVLD.Applications.DrivingLicenses
             InitializeComponent();
             _LDLappID = LDLAppID;
             _license = null;
+        }
+        public LicenseInfo(int licenseID, bool isLicenseID)
+        {
+            InitializeComponent();
+            LicenseServices licenseServices = new LicenseServices(new DVLD_DAL.SqlLicenseRepository(), new DVLD_BLL.TestSharedServices(), new LDLApplicationServices(new ApplicationServices(new DVLD_DAL.SqlApplicationRepository()), new DVLD_BLL.TestSharedServices(), new DVLD_DAL.SqlLDLApplicationRepository()), new DriverServices(new DVLD_DAL.SqlDriverRepository(), new PersonServices(new DVLD_DAL.SqlPersonRepository()), new DVLD_BLL.TestSharedServices()), new ApplicationServices(new DVLD_DAL.SqlApplicationRepository()));
+            _license = licenseServices.GetLicense(licenseID);
         }
         private void LicenseInfo_Load(object sender, EventArgs e)
         {

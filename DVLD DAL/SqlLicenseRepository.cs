@@ -187,8 +187,10 @@ SELECT SCOPE_IDENTITY();";
             string Query = @"UPDATE Licenses SET ApplicationID = @ApplicationID,
 DriverID = @DriverID, LicenseClass = @LicenseClass, IssueDate = @IssueDate,
 ExpirationDate= @ExpirationDate, Notes = @Notes, PaidFees = @PaidFees,
-IsActive = @IsActive, IssueReason = @IssueReason, CreatedByUserID= @CreatedByUserID";
+IsActive = @IsActive, IssueReason = @IssueReason, CreatedByUserID= @CreatedByUserID
+WHERE LicenseID = @LicensesID";
             SqlCommand command = new SqlCommand(Query, conn);
+            command.Parameters.AddWithValue("@LicensesID", license.LicenseID);
             command.Parameters.AddWithValue("@ApplicationID",license.ApplicationID);
             command.Parameters.AddWithValue("@DriverID",license.DriverID);
             command.Parameters.AddWithValue("@LicenseClass", license.LicenseClassID);

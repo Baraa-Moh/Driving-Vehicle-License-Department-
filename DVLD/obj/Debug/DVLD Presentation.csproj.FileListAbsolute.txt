@@ -96,5 +96,6 @@ C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-
 C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.UserControls.ctrlFilterShowLicenseInfo.resources
 C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.Applications.DrivingLicenses.InternationalLicenseInfo.resources
 C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.UserControls.ctrlInternationalDrivingLicenseInfo.resources
-C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.exe.config
 C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.Applications.DrivingLicenses.RenewLicenseApp.resources
+C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.Applications.DrivingLicenses.ReplacementForLostOrDamaged.resources
+C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.exe.config
