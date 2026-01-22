@@ -12,13 +12,23 @@ namespace DVLD_BLL
     public class DetainedLicenseServices
     {
         private readonly IDetainedLicenseRepository _rep;
+        private readonly LicenseServices _licenseServices;
         public DetainedLicenseServices(IDetainedLicenseRepository rep)
         {
             _rep = rep;
+            LDLApplicationServices ldlServices = new LDLApplicationServices(new ApplicationServices(new SqlApplicationRepository()), new TestSharedServices(), new SqlLDLApplicationRepository());
+            _licenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), ldlServices, new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices()), new ApplicationServices(new SqlApplicationRepository()));
         }
-        public bool AddNewDetain(DetainedLicense detainedLicense)
+        public bool AddNewDetain(DetainedLicense detainedLicense, ref string error)
         {
-            return _rep.AddNewDetain(detainedLicense);
+            if (_rep.AddNewDetain(detainedLicense))
+            {
+                License license = _licenseServices.GetLicense(detainedLicense.LicenseID);
+                license.isActive = false;
+                _licenseServices.Save(license, ref error);
+                return true;
+            }
+            return false;
         }
         public bool UpdateDetain(DetainedLicense detainedLicense)
         {

@@ -103,5 +103,17 @@ namespace DVLD
             ReplacementForLostOrDamaged form = new ReplacementForLostOrDamaged();
             form.ShowDialog();
         }
+
+        private void retakeTestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageLDLApplications form = new ManageLDLApplications();
+            form.ShowDialog();
+        }
+
+        private void detainLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DetainLicense form = new DetainLicense();
+            form.ShowDialog();
+        }
     }
 }

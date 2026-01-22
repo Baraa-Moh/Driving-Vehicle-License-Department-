@@ -53,7 +53,18 @@ namespace DVLD.UserControls
         {
 
         }
-
+        public void Clear()
+        {
+            lbID.Text = "???";
+            lbStatus.Text = "???";
+            lbType.Text = "???";
+            lbApplicatnt.Text = "???";
+            lbFees.Text = "???";
+            lbDate.Text = "???";
+            lbStatusDate.Text = "???";
+            lbCreatedBy.Text = "???";
+            _app = null;
+        }
         private void lLbViewPersonInfo_Click(object sender, EventArgs e)
         {
             PersonDetails form = new PersonDetails(_app.PersonID);

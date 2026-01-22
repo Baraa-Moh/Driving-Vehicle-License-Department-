@@ -72,7 +72,7 @@
             this.ctrlLicenseInfo1.Location = new System.Drawing.Point(1, 11);
             this.ctrlLicenseInfo1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.ctrlLicenseInfo1.Name = "ctrlLicenseInfo1";
-            this.ctrlLicenseInfo1.Size = new System.Drawing.Size(982, 264);
+            this.ctrlLicenseInfo1.Size = new System.Drawing.Size(1026, 264);
             this.ctrlLicenseInfo1.TabIndex = 0;
             // 
             // ctrlFilterShowLicenseInfo
@@ -82,7 +82,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "ctrlFilterShowLicenseInfo";
-            this.Size = new System.Drawing.Size(1002, 434);
+            this.Size = new System.Drawing.Size(1040, 434);
             this.Load += new System.EventHandler(this.ctrlFilterShowLicenseInfo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

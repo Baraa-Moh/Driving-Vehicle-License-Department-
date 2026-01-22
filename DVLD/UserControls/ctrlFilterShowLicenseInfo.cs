@@ -27,13 +27,26 @@ namespace DVLD.UserControls
         {
             InitializeComponent();
         }
-
         private void ctrlFilterLicenses1_OnLicenseFound(Common.License obj)
         {
-            ctrlLicenseInfo1.Load_License(obj);
+            if(obj == null)
+            {
+                ctrlLicenseInfo1.Clear();
+            }
+            else
+                ctrlLicenseInfo1.Load_License(obj);
+
             LicenseFound(obj);
         }
-
+        public void Load_License(Common.License license)
+        {
+            ctrlLicenseInfo1.Load_License(license);
+            
+        }
+        public void Clear()
+        {
+            ctrlLicenseInfo1.Clear();
+        }
         private void ctrlFilterShowLicenseInfo_Load(object sender, EventArgs e)
         {
 
