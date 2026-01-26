@@ -115,5 +115,11 @@ namespace DVLD
             DetainLicense form = new DetainLicense();
             form.ShowDialog();
         }
+
+        private void releaseDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReleaseDetain form = new ReleaseDetain();
+            form.ShowDialog();
+        }
     }
 }

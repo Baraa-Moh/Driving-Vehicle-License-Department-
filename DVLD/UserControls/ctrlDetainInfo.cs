@@ -21,7 +21,7 @@ namespace DVLD.UserControls
 
         private void ctrlDetainInfo_Load(object sender, EventArgs e)
         {
-
+            comboBox1.SelectedItem = 0;
         }
 
         public void Load_DetainedLicenseInfo(DetainedLicense detainedLicense)
@@ -52,7 +52,7 @@ namespace DVLD.UserControls
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _detained.FineFees = Convert.ToDouble(comboBox1.ValueMember);
+            _detained.FineFees = Convert.ToDouble(comboBox1.SelectedItem);
         }
     }
 }

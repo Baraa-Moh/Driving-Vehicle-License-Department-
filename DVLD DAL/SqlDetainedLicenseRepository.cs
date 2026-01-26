@@ -86,7 +86,7 @@ namespace DVLD_DAL
         {
             DetainedLicense detainedLicense = null;
             SqlConnection conn = new SqlConnection(_connectionString);
-            string Query = "SELECT * FROM DetainedLicenses WHERE LicenseID = @LicenseID";
+            string Query = "SELECT * FROM DetainedLicenses WHERE LicenseID = @LicenseID AND ISReleased = 0";
             SqlCommand cmd = new SqlCommand(Query, conn);
             cmd.Parameters.AddWithValue("@LicenseID", licenseID);
             try

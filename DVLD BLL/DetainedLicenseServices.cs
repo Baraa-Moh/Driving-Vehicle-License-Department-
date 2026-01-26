@@ -13,26 +13,58 @@ namespace DVLD_BLL
     {
         private readonly IDetainedLicenseRepository _rep;
         private readonly LicenseServices _licenseServices;
+        private readonly ApplicationServices _applicationServices;
+        private readonly DriverServices _driverServices;
+        private readonly ApplicationTypeServices _applicationTypeServices;
         public DetainedLicenseServices(IDetainedLicenseRepository rep)
         {
             _rep = rep;
             LDLApplicationServices ldlServices = new LDLApplicationServices(new ApplicationServices(new SqlApplicationRepository()), new TestSharedServices(), new SqlLDLApplicationRepository());
             _licenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), ldlServices, new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices()), new ApplicationServices(new SqlApplicationRepository()));
+            _applicationServices = new ApplicationServices(new SqlApplicationRepository());
+            _driverServices = new DriverServices(new SqlDriverRepository(),new PersonServices(new SqlPersonRepository()),new TestSharedServices());
+            _applicationTypeServices = new ApplicationTypeServices(new SqlApplicationTypeRepository());
         }
         public bool AddNewDetain(DetainedLicense detainedLicense, ref string error)
         {
-            if (_rep.AddNewDetain(detainedLicense))
+            if (isDetained(detainedLicense.LicenseID))
             {
-                License license = _licenseServices.GetLicense(detainedLicense.LicenseID);
-                license.isActive = false;
-                _licenseServices.Save(license, ref error);
-                return true;
+                error = "License already is detained";
+                return false;
             }
-            return false;
+            return _rep.AddNewDetain(detainedLicense);
         }
-        public bool UpdateDetain(DetainedLicense detainedLicense)
+        public bool UpdateDetain(DetainedLicense detainedLicense, ref string error)
         {
             return _rep.UpdateDetain(detainedLicense);
+        }
+        private bool PrepareForRelease(DetainedLicense detainedLicense, ref string error)
+        {
+            License license = _licenseServices.GetLicense(detainedLicense.LicenseID);
+            Application app = new Application();
+            app.PersonID = _driverServices.GetDriver(license.DriverID).PersonID;
+            app.Date = DateTime.Now;
+            app.TypeID = (int)Core.ApplicationTypes.ReleaseDetainedLicense;
+            app.Status = 3;
+            app.LastStatuesDate = DateTime.Now;
+            app.PaidFees = _applicationTypeServices.GetApplicationType((int)Core.ApplicationTypes.ReleaseDetainedLicense).Fees;
+            app.CreatedBy = Core.CurrentUser.UserID;
+            if (!_applicationServices.Save(app))
+            {
+                error = "Error with making an application";
+                return false;
+            }
+            detainedLicense.ReleaseApplicationID = app.ID;
+            detainedLicense.ReleaseDate = DateTime.Now;
+            detainedLicense.IsReleased = true;
+            detainedLicense.ReleasedByUserID = Core.CurrentUser.UserID;
+            return true;
+        }
+        public bool ReleaseDetain(DetainedLicense detainedLicense, ref string error)
+        {
+            if (!PrepareForRelease(detainedLicense, ref error))
+                return false;
+            return UpdateDetain(detainedLicense,ref error);
         }
         public bool DeleteDetain(int detainID)
         {

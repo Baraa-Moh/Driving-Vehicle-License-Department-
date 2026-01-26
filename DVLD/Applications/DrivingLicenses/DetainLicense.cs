@@ -39,36 +39,40 @@ namespace DVLD.Applications.DrivingLicenses
                 return;
             }
             _license = obj;
+            btDetain.Enabled= true;
+            llbShowLicensesHistory.Enabled= true;
             Fill_DetainInfo();
         }
         private void Fill_DetainInfo()
         {
+            _detainedLicense = new Common.DetainedLicense();
             _detainedLicense.DetainDate = DateTime.Now;
             _detainedLicense.LicenseID = _license.LicenseID;
             _detainedLicense.CreatedByUserID = _license.CreatedByUserID;
+
+            ctrlDetainInfo1.Load_DetainedLicenseInfo(_detainedLicense);
         }
         private void llbShowLicensesHistory_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LicenseHistory form = new LicenseHistory(_license.DriverID, false);
             form.ShowDialog();
         }
-
         private void llbShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LicenseInfo form = new LicenseInfo(_license.DriverID);
             form.ShowDialog();
         }
-
         private void btClose_Click(object sender, EventArgs e)
         {
             Close();
         }
-
         private void btDetain_Click(object sender, EventArgs e)
         {
-            if (!_detainedLicenseServices.AddNewDetain(_detainedLicense))
+            string error = null;
+            if (!_detainedLicenseServices.AddNewDetain(_detainedLicense,ref error))
             {
-                MessageBox.Show("Something went wrong", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btDetain.Enabled = false;
                 return;
             }
 
