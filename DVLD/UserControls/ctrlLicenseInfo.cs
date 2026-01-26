@@ -36,7 +36,7 @@ namespace DVLD.UserControls
         }
         private void ctrlLicenseInfo_Load(object sender, EventArgs e)
         {
-           
+
         }
         public void Load_License(Common.License license)
         {
@@ -67,7 +67,7 @@ namespace DVLD.UserControls
             lbIsActive.Text = _license.isActive ? "Yes" : "No";
             lbExpirationDate.Text = _license.ExpirationDate.ToString();
             lbDateOfBirth.Text = person.DateOfBirth.ToString();
-            lbDriverID.Text= _license.DriverID.ToString();  
+            lbDriverID.Text = _license.DriverID.ToString();
             lbIsDetained.Text = _detainedLicenseServices.isDetained(_license.LicenseID) ? "Yes" : "No";
 
             if (person.ImagePath != null)
@@ -80,7 +80,24 @@ namespace DVLD.UserControls
                     pbImage.Image = Properties.Resources.Male_512;
                 else pbImage.Image = Properties.Resources.Female_512;
             }
-            
+
+        }
+        public void Clear()
+        {
+            lbClass.Text = "??";
+            lbName.Text = "???";
+            lbNationalID.Text = "???";
+            lbLicenseID.Text = "???";
+            lbGender.Text = "???";
+            lbIssueDate.Text = "???";
+            lbIssueReason.Text = "???";
+            lbNotes.Text = "???";
+            lbIsActive.Text = "???";
+            lbExpirationDate.Text = "???";
+            lbDateOfBirth.Text = "???";
+            lbDriverID.Text = "???";
+            lbIsDetained.Text = "???";
+            pbImage.Image = Properties.Resources.Male_512;
         }
     }
 }

@@ -53,9 +53,9 @@ namespace DVLD_BLL
                 case 2:
                     return "Renew";
                     case 3:
-                    return "Damaged";
+                    return "Replacement for Damaged";
                     case 4:
-                    return "Replacement";
+                    return "Replacement for lost";
                 default:
                     return "Unknown";
             }
@@ -175,7 +175,11 @@ namespace DVLD_BLL
                 error = "There's no license to be replaced";
                 return false;
             }
-            newLicense.IssueReason = 3;
+            if(!license2.isActive)
+            {
+                error = "The license to be replaced is not active";
+                return false;
+            }
             if (_rep.AddNew(newLicense, ref error))
             {
                 license2.isActive = false;
@@ -222,10 +226,10 @@ namespace DVLD_BLL
             }
             return _rep.Update(license);
         }
-        public bool Save(Common.License license, ref string error,Core.enIssueReason issueReason, Common.License license2= null)
+        public bool Save(Common.License license, ref string error, Core.enIssueReason? issueReason=null, Common.License license2 = null)
         {
-            if(license.LicenseID ==-1 || GetLicense(license.LicenseID)==null)
-                return AddNew(license, ref error, issueReason, license2);
+            if ((license.LicenseID == -1 || GetLicense(license.LicenseID) == null) && issueReason.HasValue)
+                return AddNew(license, ref error, (Core.enIssueReason)issueReason, license2);
             else return Update(license, ref error);
         }
     }

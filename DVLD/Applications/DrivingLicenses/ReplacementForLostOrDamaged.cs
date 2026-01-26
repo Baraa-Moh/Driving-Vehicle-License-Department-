@@ -49,6 +49,8 @@ namespace DVLD.Applications.DrivingLicenses
             else
                 lbTitle.Text = "Replacement for Lost License";
             Fill_App();
+            if(_license != null)
+                lbTotalFees.Text = (_appTypeServices.GetApplicationType(_appTypeID).Fees + _licenseClassServices.GetLicenseClass(_license.LicenseClassID).Fees).ToString("C2");
         }
         private void Fill_App()
         {
@@ -65,18 +67,29 @@ namespace DVLD.Applications.DrivingLicenses
         }
         private void ctrlFilterShowLicenseInfo1_OnLicenseFound(Common.License obj)
         {
+            if(obj == null)
+            {
+                llbShowLicensesHistory.Enabled = false;
+                btIssue.Enabled = false;
+                lbTotalFees.Text = string.Empty;
+                ctrlAppBasicInfo1.Clear();
+                Fill_App();
+                return;
+            }
+
             _license = obj;
             if (!_license.isActive)
             {
                 MessageBox.Show("The selected license is not active.", "Invalid License", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ctrlFilterShowLicenseInfo1.Clear();
                 return;
             }
 
             _personID = _driverServices.GetDriver(_license.DriverID).PersonID;
             llbShowLicensesHistory.Enabled = true;
             btIssue.Enabled = true;
+            Fill_App();
             lbTotalFees.Text = (_appTypeServices.GetApplicationType(_appTypeID).Fees + _licenseClassServices.GetLicenseClass(_license.LicenseClassID).Fees).ToString("C2");
-            Fill_App    ();
         }
         private void ReplacementForLostOrDamaged_Load(object sender, EventArgs e)
         {
@@ -115,11 +128,18 @@ namespace DVLD.Applications.DrivingLicenses
             if(_licenseServices.Save(_newLicense, ref error,Core.enIssueReason.ReplacementOrDamaged,_license))
             {
                 MessageBox.Show("New license issued successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                llbShowLicenseInfo.Enabled = true;
             }
             else
             {
                 MessageBox.Show("Error issuing new license: " + error, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void llbShowLicenseInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LicenseInfo form = new LicenseInfo(_newLicense);
+            form.ShowDialog();
         }
     }
 }

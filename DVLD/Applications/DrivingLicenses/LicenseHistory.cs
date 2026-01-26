@@ -19,16 +19,16 @@ namespace DVLD.Applications.DrivingLicenses
         private Driver _driver;
         private DriverServices _driverServices;
         private InternationalLicensesServices _intLicenseServices;
-        public LicenseHistory(int personID)
+        public LicenseHistory(int ID, bool byPersonID = true)
         {
             InitializeComponent();
             LDLApplicationServices _LDLappServices = new LDLApplicationServices(new ApplicationServices(new SqlApplicationRepository()), new TestSharedServices(), new SqlLDLApplicationRepository());
             _licenseServices = new LicenseServices(new SqlLicenseRepository(), new TestSharedServices(), _LDLappServices, new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices()), new ApplicationServices(new SqlApplicationRepository()));
             _driverServices = new DriverServices(new SqlDriverRepository(), new PersonServices(new SqlPersonRepository()), new TestSharedServices());
-            _driver = _driverServices.GetDriverByPersonID(personID); 
+            _driver = byPersonID ?  _driverServices.GetDriverByPersonID(ID) : _driverServices.GetDriver(ID);
             _intLicenseServices = new InternationalLicensesServices(new SqlInternationalLicenseRepo(),_licenseServices);
         }
-
+        
         private void LicenseHistory_Load(object sender, EventArgs e)
         {
             if(_driver ==null)

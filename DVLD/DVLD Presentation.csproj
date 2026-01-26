@@ -54,6 +54,12 @@
     <Compile Include="Applications\ApplicationTypes\EditApplicationType.Designer.cs">
       <DependentUpon>EditApplicationType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Applications\DrivingLicenses\DetainLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\DrivingLicenses\DetainLicense.Designer.cs">
+      <DependentUpon>DetainLicense.cs</DependentUpon>
+    </Compile>
     <Compile Include="Applications\DrivingLicenses\DriversList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,12 @@
     </Compile>
     <Compile Include="Applications\DrivingLicenses\LicenseInfo.Designer.cs">
       <DependentUpon>LicenseInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\DrivingLicenses\ManageDetainedLicenses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\DrivingLicenses\ManageDetainedLicenses.Designer.cs">
+      <DependentUpon>ManageDetainedLicenses.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\DrivingLicenses\ManageLDLApplications.cs">
       <SubType>Form</SubType>
@@ -131,6 +143,12 @@
     </Compile>
     <Compile Include="Applications\DrivingLicenses\TestAppointment.Designer.cs">
       <DependentUpon>TestAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Applications\DrivingLicenses\ReleaseDetain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Applications\DrivingLicenses\ReleaseDetain.Designer.cs">
+      <DependentUpon>ReleaseDetain.cs</DependentUpon>
     </Compile>
     <Compile Include="Applications\TestTypes\EditTestType.cs">
       <SubType>Form</SubType>
@@ -186,6 +204,12 @@
     </Compile>
     <Compile Include="UserControls\ctrlAppBasicInfo.Designer.cs">
       <DependentUpon>ctrlAppBasicInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ctrlDetainInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ctrlDetainInfo.Designer.cs">
+      <DependentUpon>ctrlDetainInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ctrLDLApplicationInfo.cs">
       <SubType>UserControl</SubType>
@@ -247,6 +271,12 @@
     <Compile Include="UserControls\ctrlPersonDetails.Designer.cs">
       <DependentUpon>ctrlPersonDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ctrlReleaseDetainInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ctrlReleaseDetainInfo.Designer.cs">
+      <DependentUpon>ctrlReleaseDetainInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ctrlRetakeTestInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -286,6 +316,9 @@
     <EmbeddedResource Include="Applications\ApplicationTypes\EditApplicationType.resx">
       <DependentUpon>EditApplicationType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Applications\DrivingLicenses\DetainLicense.resx">
+      <DependentUpon>DetainLicense.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Applications\DrivingLicenses\DriversList.resx">
       <DependentUpon>DriversList.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\DrivingLicenses\LicenseInfo.resx">
       <DependentUpon>LicenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\DrivingLicenses\ManageDetainedLicenses.resx">
+      <DependentUpon>ManageDetainedLicenses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\DrivingLicenses\ManageLDLApplications.resx">
       <DependentUpon>ManageLDLApplications.cs</DependentUpon>
@@ -324,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\DrivingLicenses\TestAppointment.resx">
       <DependentUpon>TestAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Applications\DrivingLicenses\ReleaseDetain.resx">
+      <DependentUpon>ReleaseDetain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Applications\TestTypes\EditTestType.resx">
       <DependentUpon>EditTestType.cs</DependentUpon>
@@ -359,6 +398,9 @@
     <EmbeddedResource Include="UserControls\ctrlAppBasicInfo.resx">
       <DependentUpon>ctrlAppBasicInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ctrlDetainInfo.resx">
+      <DependentUpon>ctrlDetainInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ctrLDLApplicationInfo.resx">
       <DependentUpon>ctrLDLApplicationInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -388,6 +430,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ctrlPersonDetails.resx">
       <DependentUpon>ctrlPersonDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ctrlReleaseDetainInfo.resx">
+      <DependentUpon>ctrlReleaseDetainInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ctrlRetakeTestInfo.resx">
       <DependentUpon>ctrlRetakeTestInfo.cs</DependentUpon>
@@ -689,6 +734,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\International 321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detain 641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detain 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Release Detained License 32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Detain 512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

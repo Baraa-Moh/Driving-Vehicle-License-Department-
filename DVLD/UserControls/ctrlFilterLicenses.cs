@@ -33,16 +33,19 @@ namespace DVLD.UserControls
         {
 
         }
-
+        public void Load_Disable(int licenseID)
+        {
+            Common.License license = _licenseServices.GetLicense(licenseID);
+            LicenseFound(license);
+            textBox1.Text = licenseID.ToString();
+            Enabled = false;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             int licenseID = Convert.ToInt32(textBox1.Text.Trim());
             Common.License license = _licenseServices.GetLicense(licenseID);
-            if (license != null)
-            {
-                LicenseFound(license);
-            }
-            else
+            LicenseFound(license);
+            if (license == null)
             {
                 MessageBox.Show("No license found with the provided ID.", "License Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }   

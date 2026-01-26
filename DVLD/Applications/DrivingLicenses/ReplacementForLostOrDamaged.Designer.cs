@@ -33,14 +33,14 @@
             this.rbLostLicense = new System.Windows.Forms.RadioButton();
             this.rbDamagedLicense = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ctrlAppBasicInfo1 = new DVLD.UserControls.ctrlAppBasicInfo();
             this.llbShowLicenseInfo = new System.Windows.Forms.LinkLabel();
             this.llbShowLicensesHistory = new System.Windows.Forms.LinkLabel();
             this.btIssue = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
-            this.lbFees = new System.Windows.Forms.Label();
             this.lbTotalFees = new System.Windows.Forms.Label();
+            this.lb4 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.ctrlAppBasicInfo1 = new DVLD.UserControls.ctrlAppBasicInfo();
             this.ctrlFilterShowLicenseInfo1 = new DVLD.UserControls.ctrlFilterShowLicenseInfo();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -107,6 +107,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Application Info";
             // 
+            // ctrlAppBasicInfo1
+            // 
+            this.ctrlAppBasicInfo1.Location = new System.Drawing.Point(1, 20);
+            this.ctrlAppBasicInfo1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.ctrlAppBasicInfo1.Name = "ctrlAppBasicInfo1";
+            this.ctrlAppBasicInfo1.Size = new System.Drawing.Size(1050, 240);
+            this.ctrlAppBasicInfo1.TabIndex = 4;
+            // 
             // llbShowLicenseInfo
             // 
             this.llbShowLicenseInfo.AutoSize = true;
@@ -118,6 +126,7 @@
             this.llbShowLicenseInfo.TabIndex = 49;
             this.llbShowLicenseInfo.TabStop = true;
             this.llbShowLicenseInfo.Text = "ShowLicenseInfo";
+            this.llbShowLicenseInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowLicenseInfo_LinkClicked);
             // 
             // llbShowLicensesHistory
             // 
@@ -159,26 +168,26 @@
             this.btClose.UseVisualStyleBackColor = true;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
-            // lbFees
-            // 
-            this.lbFees.AutoSize = true;
-            this.lbFees.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFees.Location = new System.Drawing.Point(758, 790);
-            this.lbFees.Name = "lbFees";
-            this.lbFees.Size = new System.Drawing.Size(35, 16);
-            this.lbFees.TabIndex = 52;
-            this.lbFees.Text = "????";
-            // 
             // lbTotalFees
             // 
             this.lbTotalFees.AutoSize = true;
-            this.lbTotalFees.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalFees.Location = new System.Drawing.Point(628, 792);
+            this.lbTotalFees.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalFees.Location = new System.Drawing.Point(758, 790);
             this.lbTotalFees.Name = "lbTotalFees";
-            this.lbTotalFees.Size = new System.Drawing.Size(86, 18);
-            this.lbTotalFees.TabIndex = 51;
-            this.lbTotalFees.Text = "TotalFees:";
-            this.lbTotalFees.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbTotalFees.Size = new System.Drawing.Size(35, 16);
+            this.lbTotalFees.TabIndex = 52;
+            this.lbTotalFees.Text = "????";
+            // 
+            // lb4
+            // 
+            this.lb4.AutoSize = true;
+            this.lb4.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb4.Location = new System.Drawing.Point(628, 792);
+            this.lb4.Name = "lb4";
+            this.lb4.Size = new System.Drawing.Size(86, 18);
+            this.lb4.TabIndex = 51;
+            this.lb4.Text = "TotalFees:";
+            this.lb4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pictureBox3
             // 
@@ -189,14 +198,6 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 50;
             this.pictureBox3.TabStop = false;
-            // 
-            // ctrlAppBasicInfo1
-            // 
-            this.ctrlAppBasicInfo1.Location = new System.Drawing.Point(1, 20);
-            this.ctrlAppBasicInfo1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.ctrlAppBasicInfo1.Name = "ctrlAppBasicInfo1";
-            this.ctrlAppBasicInfo1.Size = new System.Drawing.Size(1050, 240);
-            this.ctrlAppBasicInfo1.TabIndex = 4;
             // 
             // ctrlFilterShowLicenseInfo1
             // 
@@ -212,8 +213,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1083, 819);
-            this.Controls.Add(this.lbFees);
             this.Controls.Add(this.lbTotalFees);
+            this.Controls.Add(this.lb4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.llbShowLicenseInfo);
             this.Controls.Add(this.llbShowLicensesHistory);
@@ -248,8 +249,8 @@
         private System.Windows.Forms.LinkLabel llbShowLicensesHistory;
         private System.Windows.Forms.Button btIssue;
         private System.Windows.Forms.Button btClose;
-        private System.Windows.Forms.Label lbFees;
         private System.Windows.Forms.Label lbTotalFees;
+        private System.Windows.Forms.Label lb4;
         private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
