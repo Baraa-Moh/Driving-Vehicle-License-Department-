@@ -30,7 +30,7 @@ namespace DVLD.Applications.DrivingLicenses
             _testServices = new TestServices(new SqlTestRepository(), new TestSharedServices());
             _licenseClassServices = new LicenseClassServices(new SqlLicenseClassRepository());
             _personServices = new PersonServices(new SqlPersonRepository());
-            _testDto = new TestDto(new Test(), _testAppointment.TestAppointment);
+            _testDto = _testServices.GetTestByAppointmentID(testAppointmentID);
         }
 
         private void TakeTest_Load(object sender, EventArgs e)
@@ -40,6 +40,16 @@ namespace DVLD.Applications.DrivingLicenses
         private void Prepare()
         {
             Fill_Fields();
+            if(_testDto.Test.TestID != -1)
+            {
+                if(_testDto.Test.TestResult)
+                    rbPass.Checked = true;
+                else rbFail.Checked = true; 
+
+                rbFail.Enabled = false;
+                rbPass.Enabled = false;
+                btSave.Enabled = false;
+            }
         }
         private void Fill_Fields()
         {
@@ -92,6 +102,9 @@ namespace DVLD.Applications.DrivingLicenses
             if (_testServices.Save(_testDto, ref error, _testAppointment))
             {
                 MessageBox.Show("Saved", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                rbFail.Enabled = false;
+                rbPass.Enabled = false;
+                btSave.Enabled = false;
             }
             else MessageBox.Show(error, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

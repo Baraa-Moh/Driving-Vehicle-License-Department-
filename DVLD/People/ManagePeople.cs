@@ -26,6 +26,7 @@ namespace DVLD.People
         private void ManagePeople_Load(object sender, EventArgs e)
         {
             Load_People();
+            
         }
         private void Load_People()
         {
@@ -33,6 +34,48 @@ namespace DVLD.People
             cbFilters.SelectedIndex = 0;
             dgvAllPeople.DataSource = People;
             lbRecords.Text= dgvAllPeople.Rows.Count.ToString();
+            AdjustDataGrid();
+        }
+        private void AdjustDataGrid()
+        {
+            if (dgvAllPeople.Columns.Count > 0)
+            {
+                dgvAllPeople.Columns[0].HeaderText ="ID";
+                dgvAllPeople.Columns[0].Width = 110;
+
+                dgvAllPeople.Columns[1].HeaderText = "National No.";
+                dgvAllPeople.Columns[1].Width = 120;
+
+                dgvAllPeople.Columns[2].HeaderText = "First Name";
+                dgvAllPeople.Columns[2].Width = 120;
+
+                dgvAllPeople.Columns[3].HeaderText = "Second Name";
+                dgvAllPeople.Columns[3].Width = 120;
+
+                dgvAllPeople.Columns[4].HeaderText = "Third Name";
+                dgvAllPeople.Columns[4].Width = 120;
+
+                dgvAllPeople.Columns[5].HeaderText = "Last Name";
+                dgvAllPeople.Columns[5].Width = 120;
+
+                dgvAllPeople.Columns[6].HeaderText = "Birth Date";
+                dgvAllPeople.Columns[6].Width = 170;
+
+                dgvAllPeople.Columns[7].HeaderText = "Gender";
+                dgvAllPeople.Columns[7].Width = 100;
+
+                dgvAllPeople.Columns[8].HeaderText = "Address";
+                dgvAllPeople.Columns[8].Width = 200;
+
+                dgvAllPeople.Columns[9].HeaderText = "Phone";
+                dgvAllPeople.Columns[9].Width = 120;
+
+                dgvAllPeople.Columns[10].HeaderText = "Email";
+                dgvAllPeople.Columns[10].Width = 120;
+
+                dgvAllPeople.Columns[11].HeaderText = "Nationality";
+                dgvAllPeople.Columns[11].Width = 120;
+            }
         }
         private void Filter_People()
         {

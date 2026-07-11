@@ -20,6 +20,7 @@ namespace DVLD.Applications.DrivingLicenses
         private LDLApplicationServices _LDLappServices;
         private TestAppointmentServices _testAppointmentServices;
         private LDLApplicationDto _LDLApp;
+        private int _selectedLDLAppID;
         public ManageLDLApplications()
         {
             InitializeComponent();
@@ -69,10 +70,9 @@ namespace DVLD.Applications.DrivingLicenses
 
         private void deleteApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int LDLAppID =(int)dataGridView1.CurrentRow.Cells[0].Value;
-            if (MessageBox.Show($"Are you sure to delete the Application with ID({LDLAppID}) ? ", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            if (MessageBox.Show($"Are you sure to delete the Application with ID({_selectedLDLAppID}) ? ", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                if (_LDLappServices.Delete(LDLAppID))
+                if (_LDLappServices.Delete(_selectedLDLAppID))
                     MessageBox.Show("Deleted Successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else MessageBox.Show("Has not been deleted","Failed",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
@@ -81,11 +81,10 @@ namespace DVLD.Applications.DrivingLicenses
 
         private void cancelApplicationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int LDLAppID = (int)dataGridView1.CurrentRow.Cells[0].Value;
             if (MessageBox.Show($"Are you sure to cancel the Application? ", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
                 string error = null;
-                LDLApplicationDto app = _LDLappServices.GetLDLApplication(LDLAppID);
+                LDLApplicationDto app = _LDLappServices.GetLDLApplication(_selectedLDLAppID);
                 app.Application.Status = 2;
 
                 if (_LDLappServices.Save(app, ref error))
@@ -96,9 +95,9 @@ namespace DVLD.Applications.DrivingLicenses
         }
         private void Adjust_MenuStrip(object sender, EventArgs e)
         {
-            int LDLAppID = (int)dataGridView1.CurrentRow?.Cells[0].Value;
-            int nextTestType = _LDLappServices.GetNextTestType(LDLAppID);
-            _LDLApp = _LDLappServices.GetLDLApplication(LDLAppID);
+            _selectedLDLAppID = (int)dataGridView1.CurrentRow?.Cells[0].Value;
+            int nextTestType = _LDLappServices.GetNextTestType(_selectedLDLAppID);
+            _LDLApp = _LDLappServices.GetLDLApplication(_selectedLDLAppID);
 
             scheduleTestToolStripMenuItem.Enabled = true;
             issueDrivingLicenseToolStripMenuItem.Enabled = false;
@@ -157,14 +156,20 @@ namespace DVLD.Applications.DrivingLicenses
 
         private void showLicenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int LDLappID = (int)dataGridView1.CurrentRow.Cells[0].Value;
-            LicenseInfo form = new LicenseInfo(LDLappID);
+            LicenseInfo form = new LicenseInfo(_selectedLDLAppID);
             form.ShowDialog();
         }
 
         private void showPersonLicenseHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             LicenseHistory form = new LicenseHistory(_LDLApp.Application.PersonID);
+            form.ShowDialog();
+        }
+
+        private void showApplicationDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //
+            LDLApplicationDetails form = new LDLApplicationDetails(_selectedLDLAppID);
             form.ShowDialog();
         }
     }

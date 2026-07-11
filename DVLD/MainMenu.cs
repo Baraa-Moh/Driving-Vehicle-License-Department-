@@ -16,9 +16,12 @@ namespace DVLD
 {
     public partial class MainMenu : Form
     {
-        public MainMenu()
+        Login _loginForm;
+        bool _exitApp = true;
+        public MainMenu(Login loginForm)
         {
             InitializeComponent();
+            _loginForm = loginForm;
         }
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,6 +56,8 @@ namespace DVLD
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Core.CurrentUser = null;
+            _loginForm.Show();
+            _exitApp = false;
             this.Close();
         }
 
@@ -120,6 +125,17 @@ namespace DVLD
         {
             ReleaseDetain form = new ReleaseDetain();
             form.ShowDialog();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(_exitApp)
+                System.Windows.Forms.Application.Exit();
         }
     }
 }

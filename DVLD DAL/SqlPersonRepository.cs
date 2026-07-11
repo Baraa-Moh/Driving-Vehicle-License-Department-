@@ -88,7 +88,7 @@ namespace DVLD_DAL
                  reader["ImagePath"] as string
             );
         }
-        public  bool AddNew(ref Person person)
+        public  bool AddNew(Person person)
         {
             bool Added=false; 
             SqlConnection conn = new SqlConnection(_connectionString);
@@ -276,7 +276,7 @@ namespace DVLD_DAL
             DataTable People = new DataTable();
             SqlConnection conn = new SqlConnection(_connectionString);    
             string Query = @"SELECT PersonID, NationalNo, FirstName, SecondName, ThirdName, 
-                           LastName, DateOfBirth, Gender= CASE 
+                           LastName, DateOfBirth, Gender = CASE 
                            WHEN Gender = 0 THEN 'Male'
                            WHEN Gender = 1 THEN 'Female'
                            END,
@@ -308,7 +308,7 @@ namespace DVLD_DAL
             SqlConnection conn = new SqlConnection (_connectionString);
             string Query = "SELECT * FROM People WHERE PersonID = @ID";
             SqlCommand command = new SqlCommand(Query,conn);    
-            command.Parameters.AddWithValue ("ID", id);
+            command.Parameters.AddWithValue ("@ID", id);
 
             try
             {

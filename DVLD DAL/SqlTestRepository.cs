@@ -68,6 +68,31 @@ WHERE App.LocalDrivingLicenseApplicationID = @LDLAppID";
             finally { conn.Close(); }
             return test;
         }
+        public Test GetTestByAppointmentID(int testAppointmentID)
+        {
+            Test test = null;
+            SqlConnection conn = new SqlConnection(_connectionString);
+            string Query ="SELECT * FROM Tests WHERE TestAppointmentID = @AppointmentID";
+            SqlCommand command = new SqlCommand(Query,conn);
+            command.Parameters.AddWithValue("@AppointmentID",testAppointmentID);
+
+            try
+            {
+                conn.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    test = MapTest(reader);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally { conn.Close(); }
+            return test;
+        }
         private Test MapTest(SqlDataReader reader)
         {
             return new Test((int)reader["TestID"], (int)reader["TestAppointmentID"],

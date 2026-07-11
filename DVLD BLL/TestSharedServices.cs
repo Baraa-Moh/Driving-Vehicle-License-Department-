@@ -33,6 +33,15 @@ namespace DVLD_BLL
 
             return test;
         }
+        public TestDto GetTestByAppointmentID(int testAppointmentID)
+        {
+            TestDto test = new TestDto();
+            if ((test.Test = _testRep.GetTestByAppointmentID(testAppointmentID)) == null)
+                test.Test = new Test();
+
+            test.TestAppointment = _testAppointmentRep.GetTestAppointment(testAppointmentID);
+            return test;
+        }
         public bool HasFailedTest(int LDLAppID, int TestTypeID)
         {
             TestDto[] tests = ConvertDataTable(_testRep.GetAllTestsByLDLAppID(LDLAppID));

@@ -103,3 +103,5 @@ C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-
 C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.Applications.ReleaseDetain.resources
 C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.UserControls.ctrlReleaseDetainInfo.resources
 C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.exe.config
+C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.Applications.DrivingLicenses.ManageDetainedLicenses.resources
+C:\Users\PCD\Baraa\Git_Projects\DVLD_Project\Driving-Vehicle-License-Department-\DVLD\obj\Debug\DVLD.Applications.DrivingLicenses.LDLApplicationDetails.resources

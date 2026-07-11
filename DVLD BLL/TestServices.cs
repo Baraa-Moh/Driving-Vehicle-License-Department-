@@ -27,6 +27,10 @@ namespace DVLD_BLL
         {
             return _sharedServices.GetTest(testID);
         }
+        public TestDto GetTestByAppointmentID(int testAppointmentID)
+        {
+            return _sharedServices.GetTestByAppointmentID(testAppointmentID);
+        }
         private bool ValidateAddNew(Test test, ref string error)
         {
             if(_sharedServices.GetTestAppointment(test.TestAppointmentID)== null)

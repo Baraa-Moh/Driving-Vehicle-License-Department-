@@ -40,12 +40,6 @@ namespace DVLD.Applications.DrivingLicenses
                 ctrlLicenseInfo1.Load_License(_LDLappID);
             else ctrlLicenseInfo1.Load_License(_license);
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btClose_Click(object sender, EventArgs e)
         {
             this.Close();

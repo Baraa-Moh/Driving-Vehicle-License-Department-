@@ -13,7 +13,7 @@ namespace DVLD_DAL
         
         Person FindByID(int id);
         Person FindByNationalNo(string nationalNo);
-        bool AddNew(ref Person person);
+        bool AddNew(Person person);
         bool Delete(int ID);
         bool Update(Person person);
         DataTable GetAllPeople(Person.enFilters filter,string Like);

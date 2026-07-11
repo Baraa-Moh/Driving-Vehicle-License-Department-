@@ -20,7 +20,7 @@ namespace DVLD_DAL
         public DataTable GetAllApplications()
         {
             DataTable applications = new DataTable();
-            SqlConnection conn = new SqlConnection( _connectionString );
+            SqlConnection conn = new SqlConnection(_connectionString);
             string Query = "SELECT * FROM Applications";
             SqlCommand command = new SqlCommand(Query, conn);
 
