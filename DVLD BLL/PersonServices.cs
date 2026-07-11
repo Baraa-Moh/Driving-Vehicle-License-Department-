@@ -30,11 +30,11 @@ namespace DVLD_BLL
         {
             return _rep.Delete(ID);
         }
-        public bool Save(ref Person person)
+        public bool Save(Person person)
         {
             if (person?.ID != -1)
                 return _rep.Update(person);
-            else return _rep.AddNew(ref person);
+            else return _rep.AddNew(person);
         }
         public bool CheckExistsByPersonID(int ID)
         {
@@ -44,7 +44,6 @@ namespace DVLD_BLL
         {
             return _rep.ExistsByNationalNo(ID);
         }
-
         public DataTable GetAllPeople(Person.enFilters filter, string Like = null)
         {
             return _rep.GetAllPeople(filter, Like);
@@ -55,7 +54,7 @@ namespace DVLD_BLL
             DataView dataView = People.DefaultView;
             filter = filter == Person.enFilters.none ? Person.enFilters.PersonID : filter;
 
-                Like = Like == null ? "" : Like;
+                Like = Like?? "";
                 dataView.RowFilter = $"Convert({filter}, 'System.String') LIKE '{Like}%'";
                 dataView.Sort = $"{filter.ToString()}";
 

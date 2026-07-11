@@ -1,4 +1,5 @@
-﻿using DVLD_BLL;
+﻿using DVLD.Applications.DrivingLicenses;
+using DVLD_BLL;
 using DVLD_BLL.DTOs;
 using DVLD_DAL;
 using System;
@@ -44,6 +45,12 @@ namespace DVLD.UserControls
         private void ctrLDLApplicationInfo_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LicenseInfo form = new LicenseInfo(_LDLApp.LDLApplication.ID);
+            form.ShowDialog();
         }
     }
 }

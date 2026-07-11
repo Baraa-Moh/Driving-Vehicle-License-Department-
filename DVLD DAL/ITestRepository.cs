@@ -12,6 +12,7 @@ namespace DVLD_DAL
     {
         DataTable GetAllTestsByLDLAppID(int LDLAppID);
         Test GetTestByID(int testID);
+        Test GetTestByAppointmentID(int testAppointmentID);
         bool AddNew(Test test);
         bool Update(Test test); 
         bool Delete(int testID);

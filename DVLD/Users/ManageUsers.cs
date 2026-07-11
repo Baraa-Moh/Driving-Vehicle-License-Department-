@@ -37,6 +37,7 @@ namespace DVLD.Users
         }
         private string Custom_Like()
         {
+            //Now I think it's better not to use it.
             if (_filter == User.enFilters.None)
                 return null;
             if(_filter == User.enFilters.IsActive)
@@ -44,7 +45,7 @@ namespace DVLD.Users
                 if (cbIsActiveFilter.SelectedIndex == 0)
                     return null;
                 else if (cbIsActiveFilter.SelectedIndex == 1)
-                    return null;
+                    return "1";
                 else return "0";
             }
             else 
@@ -53,10 +54,42 @@ namespace DVLD.Users
         private void Filter_Users()
         {
             _filter = (User.enFilters)cbFilters.SelectedIndex;
-            string Like = Custom_Like();
+            string Like = tbLike.Text.Trim();
 
-            dgvUsers.DataSource = _userServices.FilterUsers(_users, _filter, Like);
-            lbRecords.Text= dgvUsers.Rows.Count.ToString();
+            if (_filter == User.enFilters.None)
+            {
+                _users.DefaultView.RowFilter = null;
+                _users.DefaultView.Sort = $"{User.enFilters.UserID}";
+                lbRecords.Text = dgvUsers.Rows.Count.ToString();
+                return;
+            }
+
+             if (_filter == User.enFilters.IsActive)
+            {
+                switch (cbIsActiveFilter.SelectedIndex)
+                {
+                    case 0:
+                        _users.DefaultView.RowFilter = null;
+                        _users.DefaultView.Sort = $"{_filter} DESC";
+                        lbRecords.Text = dgvUsers.Rows.Count.ToString();
+                        return;
+                    case 1:
+                        _users.DefaultView.RowFilter = $"{_filter} = 1";
+                        break;
+                    case 2:
+                        _users.DefaultView.RowFilter = $"{_filter} = 0";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                _users.DefaultView.RowFilter = $"Convert({_filter}, 'System.String') LIKE '{Like}%'";
+            }
+
+            _users.DefaultView.Sort = _filter.ToString();
+            lbRecords.Text = dgvUsers.Rows.Count.ToString();
         }
         private void btClose_Click(object sender, EventArgs e)
         {

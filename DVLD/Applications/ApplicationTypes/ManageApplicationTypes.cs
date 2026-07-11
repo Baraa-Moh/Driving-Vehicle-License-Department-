@@ -36,6 +36,10 @@ namespace DVLD.Applications
         {
             dgvApplicationTypes.DataSource = _appTypeServices.GetAllTypes();
             lbRecords.Text = dgvApplicationTypes.Rows.Count.ToString();
+
+            dgvApplicationTypes.Columns[0].Width = 50;
+            dgvApplicationTypes.Columns[1].Width = 200;
+            dgvApplicationTypes.Columns[2].Width = 50;
         }
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {

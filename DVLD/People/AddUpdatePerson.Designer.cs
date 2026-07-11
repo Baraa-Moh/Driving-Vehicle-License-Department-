@@ -97,6 +97,7 @@
             // 
             this.ctrlEditPersonInfo1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ctrlEditPersonInfo1.Location = new System.Drawing.Point(17, 128);
+           // this.ctrlEditPersonInfo1.mode = DVLD.UserControls.ctrlEditPersonInfo.enMode.add;
             this.ctrlEditPersonInfo1.Name = "ctrlEditPersonInfo1";
             this.ctrlEditPersonInfo1.Size = new System.Drawing.Size(1010, 342);
             this.ctrlEditPersonInfo1.TabIndex = 6;

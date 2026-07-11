@@ -34,10 +34,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.mtbPassword = new System.Windows.Forms.MaskedTextBox();
             this.chbRememberMe = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btLogin = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.splitter1 = new System.Windows.Forms.Splitter();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -98,18 +100,18 @@
             this.chbRememberMe.Text = "Remember Me";
             this.chbRememberMe.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btLogin
             // 
-            this.button1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::DVLD.Properties.Resources.sign_in_32;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(744, 302);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 32);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btLogin.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogin.Image = global::DVLD.Properties.Resources.sign_in_32;
+            this.btLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btLogin.Location = new System.Drawing.Point(744, 302);
+            this.btLogin.Name = "btLogin";
+            this.btLogin.Size = new System.Drawing.Size(120, 32);
+            this.btLogin.TabIndex = 12;
+            this.btLogin.Text = "Login";
+            this.btLogin.UseVisualStyleBackColor = true;
+            this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 
             // pictureBox3
             // 
@@ -143,12 +145,32 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // button2
+            // 
+            this.button2.Image = global::DVLD.Properties.Resources.Close_32;
+            this.button2.Location = new System.Drawing.Point(879, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(51, 31);
+            this.button2.TabIndex = 13;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 422);
+            this.splitter1.TabIndex = 14;
+            this.splitter1.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 422);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btLogin);
             this.Controls.Add(this.chbRememberMe);
             this.Controls.Add(this.mtbPassword);
             this.Controls.Add(this.pictureBox3);
@@ -158,9 +180,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -182,6 +206,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox mtbPassword;
         private System.Windows.Forms.CheckBox chbRememberMe;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btLogin;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Splitter splitter1;
     }
 }

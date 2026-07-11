@@ -69,7 +69,7 @@ namespace DVLD.Applications
             {
                 e.Handled = true; // Block non-numeric input
             }
-
+            
         }
     }
 }

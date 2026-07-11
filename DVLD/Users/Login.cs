@@ -37,7 +37,7 @@ namespace DVLD.Users
             tbUsername.Text = string.Empty;
             mtbPassword.Text= string.Empty;
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void btLogin_Click(object sender, EventArgs e)
         {
             Core.CurrentUser = _userServices.Validate_Login(tbUsername.Text, mtbPassword.Text);
             if (Core.CurrentUser == null)
@@ -64,10 +64,17 @@ namespace DVLD.Users
                 Settings1.Default.Username =string.Empty;
                 Settings1.Default.Password = string.Empty;
             }
-            MainMenu form = new MainMenu();
+            this.Hide();
+            MainMenu form = new MainMenu(this);
             form.ShowDialog();
+
             if (!chbRememberMe.Checked)
                 Empty_Fields();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+             this.Close();
         }
     }
 }

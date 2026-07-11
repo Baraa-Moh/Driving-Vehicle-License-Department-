@@ -120,6 +120,7 @@ namespace DVLD_BLL
                 error = "Invalid expired license";
                 return false;
             }
+            //here I think the function should be taking the class of the license.
             if (HasActiveLicense(newLicense.DriverID)){
                error = "There's an active license for this driver";
                 return false;

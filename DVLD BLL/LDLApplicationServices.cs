@@ -126,7 +126,7 @@ Choose different driving class";
             }
             return Has; 
         }
-        private bool HasCompletedLDLApplication(int PersonID, int LicenseID)
+        private bool HasCompletedLDLApplication(int PersonID, int LicenseClassID)
         {
             bool has = false;
             DataTable apps = GetAllLDLApplicationsByPersonID(PersonID); 
@@ -135,7 +135,7 @@ Choose different driving class";
 
             foreach(DataRow row in apps.Rows)
             {
-                if((int)row["LicenseClassID"] == LicenseID && Convert.ToInt32(row["ApplicationStatus"]) == 3)
+                if((int)row["LicenseClassID"] == LicenseClassID && Convert.ToInt32(row["ApplicationStatus"]) == 3)
                     has = true;
             }
             return has;

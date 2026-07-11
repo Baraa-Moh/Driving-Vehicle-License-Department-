@@ -20,6 +20,7 @@ namespace DVLD_DAL
 
         public DataTable GetAllApplications()
         {
+            //The query is better to be selecting a view, but no problem.
             DataTable apps = new DataTable();
             SqlConnection conn = new SqlConnection( _connectionString );
             string Query = @"SELECT 

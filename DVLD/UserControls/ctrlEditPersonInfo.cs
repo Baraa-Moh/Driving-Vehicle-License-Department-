@@ -124,7 +124,7 @@ namespace DVLD.UserControls
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 _person.ImagePath= openFileDialog1.FileName;
-                pbImage.Load(_person.ImagePath);
+                pbImage.ImageLocation = _person.ImagePath;
                 pbImage.Tag = 1;
             }
         }
@@ -195,7 +195,7 @@ namespace DVLD.UserControls
             Fill_Person();
             PersonServices personServices= new PersonServices(new SqlPersonRepository());
 
-                Succeeded = personServices.Save(ref _person);
+                Succeeded = personServices.Save(_person);
 
             if(Succeeded)
             {

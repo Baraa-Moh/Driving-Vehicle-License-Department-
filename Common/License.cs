@@ -43,5 +43,10 @@ namespace Common
             LicenseClassID = -1;
             CreatedByUserID= -1;
         }
+        
+        public bool isExpired()
+        {
+            return ExpirationDate < DateTime.Now;
+        }
     }
 }
