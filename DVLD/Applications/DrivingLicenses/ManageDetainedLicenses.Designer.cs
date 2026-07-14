@@ -74,6 +74,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "ManageDetainedLicenses";
             this.Text = "ManageDetainedLicenses";
+            this.Load += new System.EventHandler(this.ManageDetainedLicenses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

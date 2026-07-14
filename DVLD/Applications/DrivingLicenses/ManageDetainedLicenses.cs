@@ -16,5 +16,10 @@ namespace DVLD.Applications.DrivingLicenses
         {
             InitializeComponent();
         }
+
+        private void ManageDetainedLicenses_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

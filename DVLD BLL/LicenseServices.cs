@@ -89,7 +89,8 @@ namespace DVLD_BLL
                 driver.CreatedByUserID = Core.CurrentUser.UserID;
                 driver.CreatedDate = DateTime.Now;
                 license.isActive = true;
-
+                _driverServices.Save(driver);
+                license.DriverID = driver.DriverID;
                 if (!_rep.AddNew(license,ref error))
                 {
                     error += " ERROR";
@@ -98,7 +99,6 @@ namespace DVLD_BLL
                 else {
                     LDLApp.Application.Status = 3;
                     _LDLappServices.Save(LDLApp, ref error);
-                    _driverServices.Save(driver);
                     return true;
                 }
             }

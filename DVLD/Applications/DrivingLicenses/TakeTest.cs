@@ -86,6 +86,7 @@ namespace DVLD.Applications.DrivingLicenses
             _testDto.Test.Notes=tbNotes.Text;
             _testDto.Test.TestResult = rbPass.Checked ? true : false;
             _testDto.Test.CreatedByUserID = Core.CurrentUser.UserID;
+            _testDto.Test.TestAppointmentID = _testAppointment.TestAppointment.TestAppointmentID;
         }
         private void btClose_Click(object sender, EventArgs e)
         {

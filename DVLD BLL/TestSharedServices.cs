@@ -35,11 +35,15 @@ namespace DVLD_BLL
         }
         public TestDto GetTestByAppointmentID(int testAppointmentID)
         {
-            TestDto test = new TestDto();
+            TestDto test =new TestDto();
             if ((test.Test = _testRep.GetTestByAppointmentID(testAppointmentID)) == null)
-                test.Test = new Test();
-
+            {
+                test = new TestDto();
+                test.Test.TestAppointmentID = testAppointmentID;
+                return test;
+            }
             test.TestAppointment = _testAppointmentRep.GetTestAppointment(testAppointmentID);
+            test.Test.TestAppointmentID = testAppointmentID;
             return test;
         }
         public bool HasFailedTest(int LDLAppID, int TestTypeID)

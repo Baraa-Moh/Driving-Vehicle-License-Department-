@@ -137,5 +137,11 @@ namespace DVLD
             if(_exitApp)
                 System.Windows.Forms.Application.Exit();
         }
+
+        private void manageDetainedLicenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //ManageDetainedLicenses form = new ManageDetainedLicenses();
+            //form.ShowDialog();
+        }
     }
 }
