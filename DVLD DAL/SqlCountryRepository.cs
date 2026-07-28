@@ -31,9 +31,9 @@ namespace DVLD_DAL
                 if(reader.HasRows)
                     Countries.Load(reader); 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -57,9 +57,9 @@ namespace DVLD_DAL
                     country.Name  = reader["CountryName"] as string;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -83,9 +83,9 @@ namespace DVLD_DAL
                     country.Name = reader["CountryName"] as string;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }

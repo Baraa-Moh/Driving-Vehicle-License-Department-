@@ -31,9 +31,9 @@ namespace DVLD_DAL
                 if(reader.HasRows)
                     LicenseClasses.Load(reader);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -62,9 +62,9 @@ namespace DVLD_DAL
                     licenseClass = MapClass(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }

@@ -46,9 +46,9 @@ namespace DVLD_DAL
                     user = MapUser(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             finally { conn.Close(); }
             return user;
@@ -71,9 +71,9 @@ namespace DVLD_DAL
                     user = MapUser(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             finally { conn.Close(); }
             return user;
@@ -95,9 +95,9 @@ namespace DVLD_DAL
                     user = MapUser(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -121,9 +121,9 @@ namespace DVLD_DAL
                     Users.Load(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             finally { conn.Close(); }
             return Users;
@@ -150,9 +150,9 @@ namespace DVLD_DAL
                     Added = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             finally { conn.Close(); }
             return Added;
@@ -174,9 +174,9 @@ namespace DVLD_DAL
                 int affected = command.ExecuteNonQuery();
                 Updated = (affected > 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             finally { conn.Close(); }
             return Updated;
@@ -195,9 +195,9 @@ namespace DVLD_DAL
                 int Affected = command.ExecuteNonQuery();
                 Deleted = Affected > 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             finally { conn.Close(); }
             return Deleted;
@@ -216,9 +216,9 @@ namespace DVLD_DAL
                 object result = command.ExecuteScalar();
                 Found = (result != null && result != DBNull.Value && Convert.ToInt32(result) == 1);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             finally { conn.Close(); }
             return Found;
@@ -237,9 +237,9 @@ namespace DVLD_DAL
                 object result = command.ExecuteScalar();
                 Found = (result != null && result != DBNull.Value && Convert.ToInt32(result) == 1);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -259,8 +259,9 @@ namespace DVLD_DAL
                 object result = command.ExecuteScalar();
                 password = result == null ? null : Convert.ToString(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -280,9 +281,9 @@ namespace DVLD_DAL
                 object result = command.ExecuteScalar();
                 found = (result != null && result != DBNull.Value);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -303,8 +304,9 @@ namespace DVLD_DAL
                 int affected = command.ExecuteNonQuery ();
                 changed = (affected > 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -324,9 +326,9 @@ namespace DVLD_DAL
                 object result = command.ExecuteScalar();
                 active = (result != null&& result != DBNull.Value);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }

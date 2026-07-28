@@ -31,9 +31,9 @@ namespace DVLD_DAL
                 if (reader.HasRows)
                     ApplicationTypes.Load(reader);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -56,9 +56,9 @@ namespace DVLD_DAL
                     appType = MapApplicationType(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -86,9 +86,9 @@ namespace DVLD_DAL
                 int affected = command.ExecuteNonQuery();
                 updated = affected > 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }

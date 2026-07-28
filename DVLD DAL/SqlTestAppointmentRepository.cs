@@ -38,9 +38,9 @@ WHERE LDLApp.LocalDrivingLicenseApplicationID = @ID";
                     testAppointments.Load(reader);
                 else testAppointments = null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -63,9 +63,9 @@ WHERE LDLApp.LocalDrivingLicenseApplicationID = @ID";
                     testAppointment = MapTestAppointment(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -102,9 +102,9 @@ SELECT SCOPE_IDENTITY();";
                     added = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -124,9 +124,9 @@ SELECT SCOPE_IDENTITY();";
                 int affectedRows = command.ExecuteNonQuery();
                 deleted = (affectedRows > 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -155,9 +155,9 @@ WHERE TestAppointmentID = @TestAppointmentID";
                 int affectedRows = command.ExecuteNonQuery();
                 updated = (affectedRows > 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally{ conn.Close(); }
