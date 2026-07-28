@@ -35,9 +35,9 @@ WHERE App.LocalDrivingLicenseApplicationID = @LDLAppID";
                     tests.Load(reader);
                 else tests = null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -60,9 +60,9 @@ WHERE App.LocalDrivingLicenseApplicationID = @LDLAppID";
                     test = MapTest(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -85,9 +85,9 @@ WHERE App.LocalDrivingLicenseApplicationID = @LDLAppID";
                     test = MapTest(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -120,9 +120,9 @@ SELECT SCOPE_IDENTITY();";
                     added = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -142,9 +142,9 @@ SELECT SCOPE_IDENTITY();";
                 int affected = command.ExecuteNonQuery();
                 deleted = (affected == 1);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -170,9 +170,9 @@ WHERE TestID = @ID";
                 int affected = command.ExecuteNonQuery();
                 updated = (affected == 1);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }

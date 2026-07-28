@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Common;
 using DVLD_BLL;
 using DVLD_DAL;
+using Microsoft.Win32;
+using System.Diagnostics;
 
 namespace DVLD.Users
 {
@@ -24,13 +26,23 @@ namespace DVLD.Users
 
         private void Login_Load(object sender, EventArgs e)
         {
-            if (Settings1.Default.Username.Length != 0)
+            try
             {
-                chbRememberMe.Checked = true;
-                tbUsername.Text = Settings1.Default.Username;
-                mtbPassword.Text = Settings1.Default.Password;
+                string value = Registry.GetValue(Core.KeyPath, "RememberMeChecked", null) as string ?? "False";
+                chbRememberMe.Checked = value.Equals("True");
+
+                if(chbRememberMe.Checked)
+                {
+                    tbUsername.Text = Registry.GetValue(Core.KeyPath, "Username", null) as string ?? "";
+                    mtbPassword.Text = Registry.GetValue(Core.KeyPath, "Password", null) as string ?? "";
+                }
             }
-            Core.CurrentUser = null;
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                Core.LogEvent("Error in retrieving user's credential", EventLogEntryType.Error);
+                throw;
+            }
         }
         private void Empty_Fields()
         {
@@ -54,16 +66,8 @@ namespace DVLD.Users
                 return;
             }
 
-            if(chbRememberMe.Checked)
-            {
-                Settings1.Default.Username = tbUsername.Text;
-                Settings1.Default.Password = mtbPassword.Text;
-            }
-            else
-            {
-                Settings1.Default.Username =string.Empty;
-                Settings1.Default.Password = string.Empty;
-            }
+            Store_Credential();
+            
             this.Hide();
             MainMenu form = new MainMenu(this);
             form.ShowDialog();
@@ -71,10 +75,26 @@ namespace DVLD.Users
             if (!chbRememberMe.Checked)
                 Empty_Fields();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
              this.Close();
+        }
+        private void Store_Credential()
+        {
+            string Username = chbRememberMe.Checked ? tbUsername.Text.Trim() : "";
+            string Password = chbRememberMe.Checked ? mtbPassword.Text.Trim() : "";
+                        
+            try
+            {
+                Registry.SetValue(Core.KeyPath, "Username", Username);
+                Registry.SetValue(Core.KeyPath, "Password", Password);
+                Registry.SetValue(Core.KeyPath, "RememberMeChecked", chbRememberMe.Checked);
+            }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred: {ex.Message}");
+                    throw;
+                }
         }
     }
 }

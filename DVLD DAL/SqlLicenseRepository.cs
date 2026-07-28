@@ -35,9 +35,9 @@ namespace DVLD_DAL
                     licenses.Load(reader);
                 else licenses = null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -58,9 +58,9 @@ namespace DVLD_DAL
                 while (reader.Read())
                     license = MapLicense(reader);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -81,9 +81,9 @@ namespace DVLD_DAL
                 while (reader.Read())
                     license = MapLicense(reader);
             }
-            catch (Exception)
+            catch (Exception ex )
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -103,8 +103,9 @@ namespace DVLD_DAL
                 while (reader.Read())
                     license = MapLicense(reader);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -133,9 +134,9 @@ namespace DVLD_DAL
                 int affected = command.ExecuteNonQuery();
                 deleted = (affected > 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -175,6 +176,7 @@ SELECT SCOPE_IDENTITY();";
             catch (Exception ex)
             {
                 error = ex.ToString();
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -208,9 +210,9 @@ WHERE LicenseID = @LicensesID";
                 int affected = command.ExecuteNonQuery();
                 updated = (affected > 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally {  conn.Close(); }

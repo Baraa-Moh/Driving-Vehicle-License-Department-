@@ -32,9 +32,9 @@ namespace DVLD_DAL
                     applications.Load(reader);
                 else applications = null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -63,9 +63,9 @@ namespace DVLD_DAL
                 while(reader.Read())
                 app = MapApplication(reader);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message,System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -97,9 +97,9 @@ namespace DVLD_DAL
                     added = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message,System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -122,9 +122,9 @@ namespace DVLD_DAL
                 int affected = command.ExecuteNonQuery();
                 updated = affected > 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -144,9 +144,9 @@ namespace DVLD_DAL
                 int affected = command.ExecuteNonQuery();
                 deleted = affected > 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -166,9 +166,9 @@ namespace DVLD_DAL
                 object result = (object)command.ExecuteScalar();
                 exists = (result != DBNull.Value && result != null);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message,System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally{ conn.Close(); }

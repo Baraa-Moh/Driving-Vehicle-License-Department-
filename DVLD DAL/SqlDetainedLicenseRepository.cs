@@ -34,9 +34,9 @@ namespace DVLD_DAL
                 }
                 else detains = null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -60,9 +60,9 @@ namespace DVLD_DAL
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -98,8 +98,9 @@ namespace DVLD_DAL
                     detainedLicense = MapReaderToDetainedLicense(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -132,9 +133,9 @@ namespace DVLD_DAL
                     detainedLicense.DetainID = newID;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -163,8 +164,9 @@ namespace DVLD_DAL
                 int rowsAffected = cmd.ExecuteNonQuery();
                 isUpdated = rowsAffected > 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -183,8 +185,9 @@ namespace DVLD_DAL
                 int rowsAffected = cmd.ExecuteNonQuery();
                 isDeleted = rowsAffected > 0;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }

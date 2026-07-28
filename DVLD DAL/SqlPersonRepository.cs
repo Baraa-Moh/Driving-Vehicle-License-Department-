@@ -38,7 +38,7 @@ namespace DVLD_DAL
             }
             catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             finally { conn.Close(); }
             return person;
@@ -63,6 +63,7 @@ namespace DVLD_DAL
             }
             catch (Exception ex)
             {
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -125,9 +126,9 @@ namespace DVLD_DAL
                     
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -165,9 +166,9 @@ namespace DVLD_DAL
                int  result = command.ExecuteNonQuery();
                 Updated = (result> 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -187,9 +188,9 @@ namespace DVLD_DAL
                 int result = command.ExecuteNonQuery();
                 Deleted = (result> 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             finally { conn.Close (); }
             return Deleted;
@@ -208,9 +209,9 @@ namespace DVLD_DAL
                 object result = command.ExecuteScalar();
                 exists = (result != null && result!= DBNull.Value && Convert.ToInt32(result)==1);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close (); }
@@ -230,14 +231,13 @@ namespace DVLD_DAL
                 object result = command.ExecuteScalar();
                 exists = (result != null && result != DBNull.Value && Convert.ToInt32(result) == 1);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
             }
             finally { conn.Close(); }
             return exists;
         }
-
         private string CustomQuery(Person.enFilters filter, string like = null)
         {
             if(like == null)
@@ -263,9 +263,9 @@ namespace DVLD_DAL
                 if(reader.HasRows) 
                     People.Load (reader);
             }
-            catch (Exception)
+            catch (Exception  ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close (); }
@@ -294,9 +294,9 @@ namespace DVLD_DAL
                     People.Load (reader);
                 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close (); }
@@ -319,9 +319,9 @@ namespace DVLD_DAL
                    person = MapPerson(reader);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close (); }

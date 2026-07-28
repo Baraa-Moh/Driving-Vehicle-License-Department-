@@ -118,9 +118,9 @@ SELECT SCOPE_IDENTITY();";
                     added = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { sqlConnection.Close(); }
@@ -141,9 +141,9 @@ SELECT SCOPE_IDENTITY();";
                 int affected = sqlCommand.ExecuteNonQuery();
                 deleted = (affected > 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
@@ -167,9 +167,9 @@ CreatedDate = @CreatedDate";
                 int affected = sqlCommand.ExecuteNonQuery();
                 updated = (affected > 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Core.LogEvent(ex.Message, System.Diagnostics.EventLogEntryType.Error);
                 throw;
             }
             finally { conn.Close(); }
