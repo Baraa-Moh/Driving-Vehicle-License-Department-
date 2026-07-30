@@ -39,8 +39,17 @@ namespace DVLD_BLL
             view.RowFilter = $"Convert({filter}, 'System.String') LIKE '{Like}%'";
             return view;
         }
+        public string ComputeHash(string input)
+        {
+            using(SHA256 sha = SHA256.Create())
+            {
+                byte[] HashedBytes = sha.ComputeHash(Encoding.UTF8.GetBytes(input));
+                return BitConverter.ToString(HashedBytes).Replace("-", "");
+            }
+        }
         private bool AddNew(ref User user)
         {
+            user.Password = ComputeHash(user.Password);
             return _rep.AddNew(ref user);
         }
         public bool Delete(int id)
@@ -72,7 +81,7 @@ namespace DVLD_BLL
             if (!_rep.CheckUserExistsByUsername(Username))
                 return null;
 
-            if (_rep.GetUserPassword(Username) == Password && _rep.CheckUserIsActive(Username))
+            if (_rep.GetUserPassword(Username) == ComputeHash(Password) && _rep.CheckUserIsActive(Username))
             {
                 return _rep.GetUserByUsername(Username);
             }
@@ -88,7 +97,7 @@ namespace DVLD_BLL
                 ErrorMessage = "Invalid Current Password";
                 return false;
             }
-            return _rep.ChangePassword(Username, NewPassword);
+            return _rep.ChangePassword(Username, ComputeHash(NewPassword));
         }
     }
 }
