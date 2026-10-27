@@ -24,6 +24,10 @@ namespace Common
 
         public static void LogEvent(string Message, EventLogEntryType type)
         {
+            //if(!EventLog.SourceExists(sourceName))
+            //{
+            //    EventLog.CreateEventSource(sourceName, "Application");
+            //}
             EventLog.WriteEntry(sourceName,Message,type);
         }
 
