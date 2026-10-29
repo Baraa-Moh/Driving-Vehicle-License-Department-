@@ -25,3 +25,12 @@ C:\Users\bara7\Git-Repos\Driving-Vehicle-License-Department-\DVLD DAL\obj\Debug\
 C:\Users\bara7\Git-Repos\Driving-Vehicle-License-Department-\DVLD DAL\obj\Debug\DVLD DAL.csproj.Up2Date
 C:\Users\bara7\Git-Repos\Driving-Vehicle-License-Department-\DVLD DAL\obj\Debug\DVLD DAL.dll
 C:\Users\bara7\Git-Repos\Driving-Vehicle-License-Department-\DVLD DAL\obj\Debug\DVLD DAL.pdb
+C:\Users\bara7\Git-Repos\DVLD\DVLD DAL\bin\Debug\DVLD DAL.dll
+C:\Users\bara7\Git-Repos\DVLD\DVLD DAL\bin\Debug\DVLD DAL.pdb
+C:\Users\bara7\Git-Repos\DVLD\DVLD DAL\bin\Debug\Common.dll
+C:\Users\bara7\Git-Repos\DVLD\DVLD DAL\bin\Debug\Common.pdb
+C:\Users\bara7\Git-Repos\DVLD\DVLD DAL\obj\Debug\DVLD DAL.csproj.AssemblyReference.cache
+C:\Users\bara7\Git-Repos\DVLD\DVLD DAL\obj\Debug\DVLD DAL.csproj.CoreCompileInputs.cache
+C:\Users\bara7\Git-Repos\DVLD\DVLD DAL\obj\Debug\DVLD DAL.csproj.Up2Date
+C:\Users\bara7\Git-Repos\DVLD\DVLD DAL\obj\Debug\DVLD DAL.dll
+C:\Users\bara7\Git-Repos\DVLD\DVLD DAL\obj\Debug\DVLD DAL.pdb

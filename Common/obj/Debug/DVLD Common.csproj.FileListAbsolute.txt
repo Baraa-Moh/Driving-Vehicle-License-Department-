@@ -16,3 +16,9 @@ C:\Users\bara7\Git-Repos\Driving-Vehicle-License-Department-\Common\obj\Debug\DV
 C:\Users\bara7\Git-Repos\Driving-Vehicle-License-Department-\Common\obj\Debug\DVLD Common.csproj.CoreCompileInputs.cache
 C:\Users\bara7\Git-Repos\Driving-Vehicle-License-Department-\Common\obj\Debug\Common.dll
 C:\Users\bara7\Git-Repos\Driving-Vehicle-License-Department-\Common\obj\Debug\Common.pdb
+C:\Users\bara7\Git-Repos\DVLD\Common\bin\Debug\Common.dll
+C:\Users\bara7\Git-Repos\DVLD\Common\bin\Debug\Common.pdb
+C:\Users\bara7\Git-Repos\DVLD\Common\obj\Debug\DVLD Common.csproj.AssemblyReference.cache
+C:\Users\bara7\Git-Repos\DVLD\Common\obj\Debug\DVLD Common.csproj.CoreCompileInputs.cache
+C:\Users\bara7\Git-Repos\DVLD\Common\obj\Debug\Common.dll
+C:\Users\bara7\Git-Repos\DVLD\Common\obj\Debug\Common.pdb
